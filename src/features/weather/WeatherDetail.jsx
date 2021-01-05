@@ -8,37 +8,43 @@ export const WeatherDetail = ({ weather, location, units }) => {
   let region = location?.region ? `, ${location.region}` : "";
   let country = location?.country ? `, ${location.country}` : "";
   return (
-    <Media>
-      <img
-        width={100}
-        height={100}
-        className="mr-3"
-        src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
-        alt="Generic placeholder"
-      />
-      <Media.Body>
-        <h5>
+    <>
+      <div>
+        <b>
           {location?.city}
           {region}
           {country}
-          <br></br>
-          <TimeDateComponent
-            seconds={weather?.dt}
-            showDate={true}
-            showTime={true}
+        </b>
+      </div>
+      <div>
+        <div>
+          <img
+            width={100}
+            height={100}
+            className="float-left"
+            src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
+            alt="Generic placeholder"
           />
-        </h5>
-        <div>
-          <h1>
+          <p className="text-xl font-bold">
             <Temperature degrees={weather?.temp} units={units} />
-          </h1>
+            <br></br>
+            <font className="text-base font-normal">
+              <TimeDateComponent
+                seconds={weather?.dt}
+                showDate={true}
+                showTime={true}
+              />
+              <br></br>
+              Feels like{" "}
+              <Temperature degrees={weather?.feels_like} units={units} />,{" "}
+              {weather?.weather[0].description}
+            </font>
+          </p>
         </div>
-        <div>
-          <b>
-            Feels like{" "}
-            <Temperature degrees={weather?.feels_like} units={units} />,{" "}
-            {weather?.weather[0].description}
-          </b>
+
+        <div class="inline-block">
+          <br></br>
+          <b></b>
         </div>
         {weather?.rain ? <Accumulation amount={weather?.rain["1h"]} /> : ""}
         {weather?.snow ? <Accumulation amount={weather?.snow["1h"]} /> : ""}
@@ -80,7 +86,7 @@ export const WeatherDetail = ({ weather, location, units }) => {
         <div>Wind Speed: {weather?.wind_speed} mph</div>
         <div>Wind Direction: {weather?.wind_deg} degrees</div>
         */}
-      </Media.Body>
-    </Media>
+      </div>
+    </>
   );
 };

@@ -11,37 +11,31 @@ export const HourlyForecast = () => {
   let units = "imperial";
 
   let content = weather?.map((data, index) => (
-    <Media key={data.dt}>
-      <img
-        width={100}
-        height={100}
-        className="mr-3"
-        src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}@2x.png`}
-        alt="Generic placeholder"
-      />
-      <Media.Body>
-        <h5>
-          <b>
-            <TimeDateComponent
-              seconds={data?.dt}
-              showDate={false}
-              showTime={true}
-              options={null}
-            />
-          </b>
-        </h5>
-        <div>
-          <h1>
-            <Temperature degrees={data?.temp} units={units} />
-          </h1>
-        </div>
+    <li>
+      <span>
+        <img
+          src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
+          alt="Generic placeholder"
+        />
+        <b>
+          <TimeDateComponent
+            seconds={data?.dt}
+            showDate={false}
+            showTime={true}
+            options={null}
+          />
+        </b>
+      </span>
+      <span>
+        <Temperature degrees={data?.temp} units={units} />
+      </span>
+      <span>
         {data?.pop ? <div> {data?.pop * 100} %</div> : ""}
-
         {data?.rain ? <Accumulation amount={data?.rain["1h"]} /> : ""}
         {data?.snow ? <Accumulation amount={data?.snow["1h"]} /> : ""}
-      </Media.Body>
-    </Media>
+      </span>
+    </li>
   ));
 
-  return <>{content}</>;
+  return <ul>{content}</ul>;
 };
