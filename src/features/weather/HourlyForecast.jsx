@@ -11,7 +11,7 @@ export const HourlyForecast = () => {
   let units = "imperial";
 
   let content = weather?.map((data, index) => (
-    <li>
+    <div>
       <span>
         <img
           src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
@@ -30,12 +30,12 @@ export const HourlyForecast = () => {
         <Temperature degrees={data?.temp} units={units} />
       </span>
       <span>
-        {data?.pop ? <div> {data?.pop * 100} %</div> : ""}
+        {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : ""}
         {data?.rain ? <Accumulation amount={data?.rain["1h"]} /> : ""}
         {data?.snow ? <Accumulation amount={data?.snow["1h"]} /> : ""}
       </span>
-    </li>
+    </div>
   ));
 
-  return <ul>{content}</ul>;
+  return <div class="grid md:grid-cols-8 sm:grid-cols-1 gap-3">{content}</div>;
 };
