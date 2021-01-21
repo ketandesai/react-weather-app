@@ -1,34 +1,18 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import { selectMinutelyWeather } from "./weatherSlice";
 import { useSelector } from "react-redux";
-import { TimeDateComponent } from "./TimeDateComponent";
 
 export const MinutelyForecast = () => {
   const weather = useSelector(selectMinutelyWeather);
-  let content = weather?.map((data, index) => (
-    <tr key={data.dt + " " + index}>
-      <td>
-        <TimeDateComponent
-          seconds={data.dt}
-          showDate={false}
-          showTime={true}
-          options={null}
-        />
-      </td>
-      <td>{data.precipitation} mm</td>
-    </tr>
-  ));
+  let initialValue = 0;
+  let sum = weather?.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue.precipitation;
+  }, initialValue);
 
-  return (
-    <Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th>Time</th>
-          <th>Precipitation</th>
-        </tr>
-      </thead>
-      <tbody>{content}</tbody>
-    </Table>
-  );
+  let content = "No precipitation in the next hour";
+  if (sum > 0) {
+    let precipitation = Number.parseFloat(sum / 25.4).toFixed(1);
+    content = `${precipitation} in the next hour`;
+  }
+  return <>{content}</>;
 };

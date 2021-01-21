@@ -8,39 +8,20 @@ export const WeatherAlert = () => {
   const weather = useSelector(selectWeatherAlerts);
 
   let content = weather?.map((alert, index) => (
-    <>
-      <tr key={alert.event}>
-        <td>{alert.event}</td>
-      </tr>
-      <tr key={alert.start}>
-        <td>
-          <TimeDateComponent
-            seconds={alert.start}
-            showDate={true}
-            showTime={true}
-          />{" "}
-          -{" "}
-          <TimeDateComponent
-            seconds={alert.end}
-            showDate={true}
-            showTime={true}
-          />
-        </td>
-      </tr>
-      <tr key={alert.description}>
-        <td>{alert.description}</td>
-      </tr>
-    </>
+    <div key={alert.event}>
+      <span>{alert.event}</span>
+      <br />
+      <TimeDateComponent
+        seconds={alert.start}
+        showDate={true}
+        showTime={true}
+      />{" "}
+      -{" "}
+      <TimeDateComponent seconds={alert.end} showDate={true} showTime={true} />
+      <br />
+      <span key={alert.description}>{alert.description}</span>
+    </div>
   ));
 
-  return (
-    <Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th>Weather Alerts</th>
-        </tr>
-      </thead>
-      <tbody>{content}</tbody>
-    </Table>
-  );
+  return <>{content}</>;
 };

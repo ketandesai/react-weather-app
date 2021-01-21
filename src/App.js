@@ -12,11 +12,11 @@ import { Footer } from "./features/components/footer/Footer";
 import { WeatherPage } from "./features/weather/WeatherPage";
 
 function App() {
-  const theme = "light";
+  const theme = "dark";
 
   return (
     <Router>
-      <div className={` bg-${theme} tracking-wider border-box wrapper`}>
+      <div className={`bg-${theme}`}>
         <div>
           <Header />
         </div>

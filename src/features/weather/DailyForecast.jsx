@@ -25,7 +25,7 @@ export const DailyForecast = () => {
         alt={data?.weather[0].description}
       />
 
-      <br></br>
+      <br />
       <span>{data?.weather[0].description}</span>
 
       <div>
@@ -34,10 +34,14 @@ export const DailyForecast = () => {
         <Temperature degrees={data?.temp.min} units={units} />
       </div>
       {data?.rain > 0 ? <Accumulation amount={data?.rain} /> : ""}
+      <br />
       {data?.snow > 0 ? <Accumulation amount={data?.snow} /> : ""}
       {data?.pop > 0 ? <div>{Math.round(data?.pop * 100)} %</div> : ""}
     </div>
   ));
-
-  return <div class="grid md:grid-cols-8 sm:grid-cols-1 gap-3">{content}</div>;
+  //removes weather for today, since it is redundant
+  content?.shift();
+  return (
+    <div className="grid md:grid-cols-7 sm:grid-cols-1 gap-3">{content}</div>
+  );
 };

@@ -10,13 +10,9 @@ export const HourlyForecast = () => {
   const weather = useSelector(selectHourlyWeather);
   let units = "imperial";
 
-  let content = weather?.map((data, index) => (
-    <div>
+  let content = weather?.map((data) => (
+    <div key={data?.dt}>
       <span>
-        <img
-          src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
-          alt="Generic placeholder"
-        />
         <b>
           <TimeDateComponent
             seconds={data?.dt}
@@ -25,7 +21,12 @@ export const HourlyForecast = () => {
             options={null}
           />
         </b>
+        <img
+          src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
+          alt={`${data?.weather[0].description}`}
+        />
       </span>
+      <br />
       <span>
         <Temperature degrees={data?.temp} units={units} />
       </span>
@@ -36,6 +37,9 @@ export const HourlyForecast = () => {
       </span>
     </div>
   ));
-
-  return <div class="grid md:grid-cols-8 sm:grid-cols-1 gap-3">{content}</div>;
+  return (
+    <div className="grid md:grid-cols-7 sm:grid-cols-1 gap-3">
+      {content?.slice(1, 8)}
+    </div>
+  );
 };
