@@ -7,19 +7,18 @@ import {
 } from "react-router-dom";
 
 import { Header } from "./features/components/header/Header";
-import { Footer } from "./features/components/footer/Footer";
-
 import { WeatherPage } from "./features/weather/WeatherPage";
+import { Footer } from "./features/components/footer/Footer";
+import { selectTheme } from "./features/weather/themeSlice";
+import { useSelector } from "react-redux";
+import "./App.css";
 
 function App() {
-  const theme = "dark";
-
+  const theme = useSelector(selectTheme);
   return (
     <Router>
-      <div className={`bg-${theme}`}>
-        <div>
-          <Header />
-        </div>
+      <div className={theme}>
+        <Header />
         <Switch>
           <Route
             exact
@@ -32,9 +31,7 @@ function App() {
           />
           <Redirect to="/" />
         </Switch>
-        <div>
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </Router>
   );

@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { fetchUsers } from "./features/users/usersSlice";
 import "./api/server";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchLocation } from "./features/weather/locationSlice";
 
 store.dispatch(fetchUsers());
