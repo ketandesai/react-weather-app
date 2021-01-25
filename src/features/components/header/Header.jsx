@@ -1,7 +1,18 @@
 import React from "react";
+import Toggle from "react-toggle";
+import "./Header.css";
+import { FaSun, FaMoon } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTheme, themeUpdated } from "../../weather/themeSlice";
 
 export const Header = () => {
-  const cssStyle = `.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}`;
+  const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
+
+  const onThemeChanged = () => {
+    let payload = theme === "light" ? "dark" : "light";
+    dispatch(themeUpdated(payload));
+  };
 
   return (
     <div className="flex justify-between items-center px-5 py-5">
@@ -40,8 +51,14 @@ export const Header = () => {
               className="octo-body"
             ></path>
           </svg>
-          <style>{cssStyle}</style>
         </a>
+      </div>
+
+      <div>
+        <Toggle
+          icons={{ checked: <FaSun />, unchecked: <FaMoon /> }}
+          onChange={onThemeChanged}
+        />
       </div>
     </div>
   );

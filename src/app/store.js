@@ -7,6 +7,7 @@ import weatherReducer from "../features/weather/weatherSlice";
 import forecastReducer from "../features/weather/forecastSlice";
 import locationReducer from "../features/weather/locationSlice";
 import geocodeReducer from "../features/weather/geocodeSlice";
+import themeReducer from "../features/weather/themeSlice";
 
 export default configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export default configureStore({
     weather: weatherReducer,
     forecast: forecastReducer,
     location: locationReducer,
-    geocode: geocodeReducer
+    geocode: geocodeReducer,
+    theme: themeReducer
   }
 });
