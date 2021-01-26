@@ -1,20 +1,19 @@
-import React from "react";
+import React from 'react'
+import { useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
-  Switch,
+  Redirect,
   Route,
-  Redirect
-} from "react-router-dom";
-
-import { Header } from "./features/components/header/Header";
-import { WeatherPage } from "./features/weather/WeatherPage";
-import { Footer } from "./features/components/footer/Footer";
-import { selectTheme } from "./features/weather/themeSlice";
-import { useSelector } from "react-redux";
-import "./App.css";
+  Switch,
+} from 'react-router-dom'
+import './App.css'
+import { Footer } from './features/components/footer/Footer'
+import { Header } from './features/components/header/Header'
+import { selectTheme } from './features/weather/themeSlice'
+import { WeatherPage } from './features/weather/WeatherPage'
 
 function App() {
-  const theme = useSelector(selectTheme);
+  const theme = useSelector(selectTheme)
   return (
     <Router>
       <div className={theme}>
@@ -34,7 +33,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

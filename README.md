@@ -28,16 +28,17 @@
 
 # 🚀 Getting Started
 
-**Sign up for an [OpenWeather] (https://openweathermap.org/) account.**
+**Sign up for an [OpenWeather](https://openweathermap.org/) account.**
+
 **Sign up for a [MapBox](https://www.mapbox.com/) account.**
 
 ## Basic Setup
 
-- Clone the `local-setup` branch in the repository
+- Clone the main branch in the repository
 
 ```bash
 
-git clone -b local-setup https://github.com/ketandesai/react-weather-app.git
+git clone https://github.com/ketandesai/react-weather-app.git
 
 ```
 
@@ -176,9 +177,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## 💡 Motivation
 
-I started learning React and Redux in 2020 and wanted apply my knowledge by developing an application. I decided on building an application that consumes an API for data so I could focus on writing efficient React code keeping performance, UX, maintainability, scalability, and optimization in mind.
+I started learning React and Redux in 2020 and wanted apply my knowledge by developing an application. I decided on building an application that consumes an API for data so I could focus on writing efficient React and Redux code keeping performance, UX, maintainability, scalability, and optimization in mind.
 
-There are many weather applications available today. The goal was to learn from some of the best and apply them to this application and create a good user experience for users.
+There are many weather applications available today. The goal was to learn from some of the best and apply them to this application and create a good user experience.
 
 ## 💻 Technologies
 
@@ -194,7 +195,7 @@ There are many weather applications available today. The goal was to learn from 
 
 ## 😢 Challenges
 
-- challenge 1
+- Redux has a high learning curve, but the benefits it offers in simplifying state management were worth the extra effort. By using Redux I was able to write more efficient and re-usable React components.
 
 - challenge 2
 
@@ -214,9 +215,9 @@ There are many weather applications available today. The goal was to learn from 
 
 - Open pull request with improvements.
 
-- If you have any new idea, check the **[feature request](https://github.com/ketandesai/react-weather-app/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)** template to create a request.
+- If you have any new idea, check the **[feature request](https://github.com/ketandesai/react-weather-app/main/.github/ISSUE_TEMPLATE/feature_request.md)** template to create a request.
 
-- If you found any issue or a bug, check the **[bug report](https://github.com/ketandesai/react-weather-app/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)** template to create a report.
+- If you found any issue or a bug, check the **[bug report](https://github.com/ketandesai/react-weather-app/main/.github/ISSUE_TEMPLATE/bug_report.md)** template to create a report.
 
 ## 📃 License
 

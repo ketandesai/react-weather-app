@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import "./WeatherPage.css";
-import { API_BASE_URL, API_KEY } from "../../api/config.js";
-
+import { OPEN_WEATHER_BASE_URL} from "../../api/config.js";
 import {
   fetchWeather,
   selectCurrentWeather
@@ -29,7 +28,7 @@ export const WeatherPage = () => {
     if (!location) {
       dispatch(fetchLocation());
     } else {
-      let allWeatherUrl = `${API_BASE_URL}/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${API_KEY}&units=${units}`;
+      let allWeatherUrl = `${OPEN_WEATHER_BASE_URL}/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=${units}`;
       console.log(`allWeatherUrl ${allWeatherUrl}`);
       dispatch(fetchWeather(allWeatherUrl));
     }
