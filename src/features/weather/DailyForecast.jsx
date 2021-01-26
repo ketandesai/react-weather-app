@@ -22,7 +22,7 @@ export const DailyForecast = () => {
       <img
         className="mr-3"
         src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
-        alt={data?.weather[0].description}
+        alt=""
       />
 
       <br />
@@ -40,7 +40,7 @@ export const DailyForecast = () => {
     </div>
   ));
   //removes weather for today, since it is redundant
-  content?.shift();
+  let firstDay = content?.shift();
   return (
     <div className="grid md:grid-cols-7 sm:grid-cols-1 gap-3">{content}</div>
   );

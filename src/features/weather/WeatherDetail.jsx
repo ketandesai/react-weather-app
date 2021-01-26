@@ -1,5 +1,4 @@
 import React from "react";
-import { Media } from "react-bootstrap";
 import { TimeDateComponent } from "./TimeDateComponent";
 import { Temperature } from "./Temperature";
 import { Accumulation } from "./Accumulation";
@@ -28,7 +27,7 @@ export const WeatherDetail = ({ weather, location, units }) => {
             <div className="flex flex-col justify-center items-center">
               <img
                 src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
-                alt={weather?.weather[0].description}
+                alt=""
               />
               <p className="hidden sm:flex sm:flex-no-wrap font-medium -mt-2 ml-3 capitalize">
                 {weather?.weather[0].description}

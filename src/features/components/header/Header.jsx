@@ -22,6 +22,7 @@ export const Header = () => {
           className="github-corner"
           aria-label="View source on GitHub"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <svg
             width="80"

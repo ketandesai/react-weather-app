@@ -2,7 +2,6 @@ import React from "react";
 import { TimeDateComponent } from "./TimeDateComponent";
 import { selectWeatherAlerts } from "./weatherSlice";
 import { useSelector } from "react-redux";
-import { Table } from "react-bootstrap";
 
 export const WeatherAlert = () => {
   const weather = useSelector(selectWeatherAlerts);

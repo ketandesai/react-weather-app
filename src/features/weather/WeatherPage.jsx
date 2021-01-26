@@ -5,8 +5,7 @@ import { API_BASE_URL, API_KEY } from "../../api/config.js";
 
 import {
   fetchWeather,
-  selectCurrentWeather,
-  selectStatus
+  selectCurrentWeather
 } from "./weatherSlice";
 
 import { fetchLocation, selectLocation } from "./locationSlice";
@@ -22,7 +21,7 @@ export const WeatherPage = () => {
   const dispatch = useDispatch();
   // units are "imperial" for Farenheight, "metric" for Celcius
   const [units, setUnits] = useState("imperial");
-  const status = useSelector(selectStatus);
+  //const status = useSelector(selectStatus);
   const location = useSelector(selectLocation);
   const currentWeather = useSelector(selectCurrentWeather);
 
