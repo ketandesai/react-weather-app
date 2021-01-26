@@ -31,8 +31,6 @@
 **Sign up for an [OpenWeather] (https://openweathermap.org/) account.**
 **Sign up for a [MapBox](https://www.mapbox.com/) account.**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
-
 ## Basic Setup
 
 - Clone the `local-setup` branch in the repository
@@ -180,7 +178,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 I started learning React and Redux in 2020 and wanted apply my knowledge by developing an application. I decided on building an application that consumes an API for data so I could focus on writing efficient React code keeping performance, UX, maintainability, scalability, and optimization in mind.
 
-There are many weather applications available today. The goal was to learn from some of the best and apply them to this application and to create a UI that is beautiful yet simple and effective for any user to use.
+There are many weather applications available today. The goal was to learn from some of the best and apply them to this application and create a good user experience for users.
+
+## 💻 Technologies
+
+-This project was bootstrapped with **[Create React App](https://github.com/facebook/create-react-app)**, using the **[Redux](https://redux.js.org/)** and **[Redux Toolkit](https://redux-toolkit.js.org/)** template.
+
+-**[OpenWeather](https://openweathermap.org/)**
+
+-**[MapBox](https://www.mapbox.com/)**
+
+- Tailwind CSS? **[TailwindCSS](https://tailwindcss.com/)**
+
+- Style Components?
 
 ## 😢 Challenges
 
@@ -204,9 +214,9 @@ There are many weather applications available today. The goal was to learn from 
 
 - Open pull request with improvements.
 
-- If you have any new idea, check the **[feature request](https://github.com/ketandesai/react-weather-app/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)** template to create a request.
+- If you have any new idea, check the **[feature request](https://github.com/ketandesai/react-weather-app/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)** template to create a request.
 
-- If you found any issue or a bug, check the **[bug report](https://github.com/ketandesai/react-weather-app/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)** template to create a report.
+- If you found any issue or a bug, check the **[bug report](https://github.com/ketandesai/react-weather-app/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)** template to create a report.
 
 ## 📃 License
 
