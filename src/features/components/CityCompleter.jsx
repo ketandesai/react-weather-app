@@ -4,7 +4,6 @@ import "./Autocomplete.css";
 import { fetchForward, selectFeatures } from "../weather/geocodeSlice";
 import { locationUpdated } from "../weather/locationSlice";
 import { fetchWeather } from "../weather/weatherSlice";
-import { process } from "autoprefixer";
 import { OPEN_WEATHER_BASE_URL} from "../../api/config.js";
 
 const ENTER_KEY = 13;
@@ -24,6 +23,7 @@ export const CityCompleter = () => {
 
   useEffect(() => {
     if (userInput) {
+      console.log("REACT_APP_MAP_BOX_API_KEY = " + process.env.REACT_APP_MAP_BOX_API_KEY);
       dispatch(fetchForward(userInput));
       if (locationSelected && lat && lon) {
         let allWeatherUrl = `${OPEN_WEATHER_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=imperial`;

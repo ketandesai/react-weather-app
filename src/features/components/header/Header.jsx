@@ -15,7 +15,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center px-5 py-5">
+    <header className="flex justify-between items-center px-5 py-5">
       <div>
         <a
           href="https://github.com/ketandesai/weather-app"
@@ -61,6 +61,6 @@ export const Header = () => {
           onChange={onThemeChanged}
         />
       </div>
-    </div>
+    </header>
   );
 };

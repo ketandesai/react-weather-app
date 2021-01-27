@@ -8,7 +8,7 @@ import "./Footer.css";
 export const Footer = () => {
   const theme = useSelector(selectTheme);
   return (
-    <div className={`footer-${theme} `}>
+    <footer className={`footer-${theme} `}>
       <div
         className={`flex flex-col text-center sm:flex sm:flex-row justify-around p-5 text-${theme} text-sm`}
       >
@@ -44,6 +44,6 @@ export const Footer = () => {
           Ketan Desai
         </a>
       </p>
-    </div>
+    </footer>
   );
 };

@@ -50,9 +50,9 @@ git clone https://github.com/ketandesai/react-weather-app.git
 
   ```bash
 
-  OPENEATHER_API_KEY = <your OpenWeather API Key>
+  REACT_APP_OPEN_WEATHER_API_KEY = <your OpenWeather API Key>
 
-  MAP_BOX_API_KEY = <your MapBox API Key>
+  REACT_APP_MAP_BOX_API_KEY = <your MapBox API Key>
 
   ```
 

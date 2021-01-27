@@ -28,6 +28,7 @@ export const WeatherPage = () => {
     if (!location) {
       dispatch(fetchLocation());
     } else {
+      console.log("process.env.REACT_APP_OPEN_WEATHER_API_KEY = " + process.env.REACT_APP_OPEN_WEATHER_API_KEY);
       let allWeatherUrl = `${OPEN_WEATHER_BASE_URL}/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=${units}`;
       console.log(`allWeatherUrl ${allWeatherUrl}`);
       dispatch(fetchWeather(allWeatherUrl));
