@@ -5,7 +5,6 @@ import './api/server'
 import App from './App'
 import store from './app/store'
 import { fetchLocation } from './reducers/locationSlice'
-import './index.css'
 
 store.dispatch(fetchLocation())
 
