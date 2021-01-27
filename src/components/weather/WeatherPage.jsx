@@ -13,13 +13,12 @@ import { MinutelyForecast } from "./MinutelyForecast";
 import { HourlyForecast } from "./HourlyForecast";
 import { DailyForecast } from "./DailyForecast";
 import { WeatherAlert } from "./WeatherAlert";
-import { Autocompleter } from "../components/Autocompleter";
+import { Autocompleter } from "../search/Autocompleter";
 
 export const WeatherPage = () => {
   const dispatch = useDispatch();
   // units are "imperial" for Farenheight, "metric" for Celcius
   const [units, setUnits] = useState("imperial");
-  //const status = useSelector(selectStatus);
   const location = useSelector(selectLocation);
   const currentWeather = useSelector(selectCurrentWeather);
 
@@ -27,9 +26,7 @@ export const WeatherPage = () => {
     if (!location) {
       dispatch(fetchLocation());
     } else {
-      console.log("process.env.REACT_APP_OPEN_WEATHER_API_KEY = " + process.env.REACT_APP_OPEN_WEATHER_API_KEY);
       let allWeatherUrl = `${OPEN_WEATHER_BASE_URL}/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=${units}`;
-      console.log(`allWeatherUrl ${allWeatherUrl}`);
       dispatch(fetchWeather(allWeatherUrl));
     }
   }, [location, units, dispatch]);
