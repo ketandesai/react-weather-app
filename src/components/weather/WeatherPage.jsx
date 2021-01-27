@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
 import "./WeatherPage.css";
 import { OPEN_WEATHER_BASE_URL} from "../../api/config.js";
 import {
@@ -48,10 +47,8 @@ export const WeatherPage = () => {
           <DailyForecast />
         </div>
       </div>
-
-      <Container>
-        <WeatherAlert />
-      </Container>
+      <WeatherAlert />
+      
     </>
   );
 };
