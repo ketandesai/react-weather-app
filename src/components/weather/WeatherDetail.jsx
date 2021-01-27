@@ -1,7 +1,6 @@
 import React from "react";
 import { TimeDateComponent } from "./TimeDateComponent";
 import { Temperature } from "./Temperature";
-import { Accumulation } from "./Accumulation";
 import { MinutelyForecast } from "./MinutelyForecast";
 
 export const WeatherDetail = ({ weather, location, units }) => {
@@ -55,43 +54,6 @@ export const WeatherDetail = ({ weather, location, units }) => {
           </div>
         </div>
       </div>
-      {/* 
-        <div>
-          Sunrise:{" "}
-          <TimeDateComponent
-            seconds={weather?.sunrise}
-            showDate={false}
-            showTime={true}
-          />
-        </div>
-        <div>
-          Sunset:{" "}
-          <TimeDateComponent
-            seconds={weather?.sunset}
-            showDate={false}
-            showTime={true}
-          />
-        </div>
-        <div>
-          Temp:
-          <Temperature degrees={weather?.temp} units={units} />
-        </div>
-        
-        <div>
-          Atmospheric pressure on the sea level, {weather?.pressure} hPa
-        </div>
-        <div>Humidity: {weather?.humidity} %</div>
-        <div>
-          Dew Point: Atmospheric temperature (varying according to pressure and
-          humidity) below which water droplets begin to condense and dew can
-          form. <Temperature degrees={weather?.dew_point} units={units} />
-        </div>
-        <div>Midday UV index: {weather?.uvi}</div>
-        <div>Cloudiness: {weather?.clouds} %</div>
-        <div>Average visibilty: {weather?.visibility} metres</div>
-        <div>Wind Speed: {weather?.wind_speed} mph</div>
-        <div>Wind Direction: {weather?.wind_deg} degrees</div>
-        */}
     </>
   );
 };
