@@ -1,6 +1,6 @@
 import React from "react";
 import { TimeDateComponent } from "./TimeDateComponent";
-import { selectWeatherAlerts } from "./weatherSlice";
+import { selectWeatherAlerts } from "../../reducers/weatherSlice";
 import { useSelector } from "react-redux";
 
 export const WeatherAlert = () => {

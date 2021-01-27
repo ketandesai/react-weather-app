@@ -1,23 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-
-import postsReducer from "../features/posts/postsSlice";
-import usersReducer from "../features/users/usersSlice";
-import notificationReducer from "../features/notifications/notificationSlice";
-import weatherReducer from "../features/weather/weatherSlice";
-import forecastReducer from "../features/weather/forecastSlice";
-import locationReducer from "../features/weather/locationSlice";
-import geocodeReducer from "../features/weather/geocodeSlice";
-import themeReducer from "../features/weather/themeSlice";
+import { configureStore } from '@reduxjs/toolkit'
+import weatherReducer from '../reducers/weatherSlice'
+import forecastReducer from '../reducers/forecastSlice'
+import locationReducer from '../reducers/locationSlice'
+import geocodeReducer from '../reducers/geocodeSlice'
+import themeReducer from '../reducers/themeSlice'
 
 export default configureStore({
   reducer: {
-    posts: postsReducer,
-    users: usersReducer,
-    notifications: notificationReducer,
     weather: weatherReducer,
     forecast: forecastReducer,
     location: locationReducer,
     geocode: geocodeReducer,
-    theme: themeReducer
-  }
-});
+    theme: themeReducer,
+  },
+})

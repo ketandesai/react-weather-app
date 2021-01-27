@@ -3,7 +3,7 @@ import Toggle from "react-toggle";
 import "./Header.css";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTheme, themeUpdated } from "../../weather/themeSlice";
+import { selectTheme, themeUpdated } from "../../../reducers/themeSlice";
 
 export const Header = () => {
   const dispatch = useDispatch();

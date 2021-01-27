@@ -9,7 +9,7 @@ import {
 import './App.css'
 import { Footer } from './features/components/footer/Footer'
 import { Header } from './features/components/header/Header'
-import { selectTheme } from './features/weather/themeSlice'
+import { selectTheme } from './reducers/themeSlice'
 import { WeatherPage } from './features/weather/WeatherPage'
 
 function App() {

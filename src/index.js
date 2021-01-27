@@ -1,16 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import store from "./app/store";
-import { Provider } from "react-redux";
-import { fetchUsers } from "./features/users/usersSlice";
-import "./api/server";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import './api/server'
+import App from './App'
+import store from './app/store'
+import { fetchLocation } from './reducers/locationSlice'
+import './index.css'
 
-import { fetchLocation } from "./features/weather/locationSlice";
-
-store.dispatch(fetchUsers());
-store.dispatch(fetchLocation());
+store.dispatch(fetchLocation())
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,5 +15,5 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)

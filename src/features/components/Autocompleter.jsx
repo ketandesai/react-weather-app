@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./Autocomplete.css";
-import { fetchForward, selectFeatures } from "../weather/geocodeSlice";
-import { locationUpdated } from "../weather/locationSlice";
-import { fetchWeather } from "../weather/weatherSlice";
+import "./Autocompleter.css";
+import { fetchForward, selectFeatures } from "../../reducers/geocodeSlice";
+import { locationUpdated } from "../../reducers/locationSlice";
+import { fetchWeather } from "../../reducers/weatherSlice";
 import { OPEN_WEATHER_BASE_URL} from "../../api/config.js";
 
 const ENTER_KEY = 13;
 const UP_ARROW_KEY = 38;
 const DOWN_ARROW_KEY = 40;
 
-export const CityCompleter = () => {
+export const Autocompleter = () => {
   const dispatch = useDispatch();
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
@@ -23,7 +23,6 @@ export const CityCompleter = () => {
 
   useEffect(() => {
     if (userInput) {
-      console.log("REACT_APP_MAP_BOX_API_KEY = " + process.env.REACT_APP_MAP_BOX_API_KEY);
       dispatch(fetchForward(userInput));
       if (locationSelected && lat && lon) {
         let allWeatherUrl = `${OPEN_WEATHER_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=imperial`;

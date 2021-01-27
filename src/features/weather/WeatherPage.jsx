@@ -5,16 +5,15 @@ import { OPEN_WEATHER_BASE_URL} from "../../api/config.js";
 import {
   fetchWeather,
   selectCurrentWeather
-} from "./weatherSlice";
-
-import { fetchLocation, selectLocation } from "./locationSlice";
+} from "../../reducers/weatherSlice";
+import { fetchLocation, selectLocation } from "../../reducers/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { WeatherDetail } from "./WeatherDetail";
 import { MinutelyForecast } from "./MinutelyForecast";
 import { HourlyForecast } from "./HourlyForecast";
 import { DailyForecast } from "./DailyForecast";
 import { WeatherAlert } from "./WeatherAlert";
-import { CityCompleter } from "../components/CityCompleter";
+import { Autocompleter } from "../components/Autocompleter";
 
 export const WeatherPage = () => {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ export const WeatherPage = () => {
   return (
     <>
       <div className="search">
-        <CityCompleter />
+        <Autocompleter />
       </div>
       <div className="weather">
         <WeatherDetail

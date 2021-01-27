@@ -1,7 +1,7 @@
 import React from "react";
 import { TimeDateComponent } from "./TimeDateComponent";
 import { Temperature } from "./Temperature";
-import { selectHourlyWeather } from "./weatherSlice";
+import { selectHourlyWeather } from "../../reducers/weatherSlice";
 import { useSelector } from "react-redux";
 import { Accumulation } from "./Accumulation";
 

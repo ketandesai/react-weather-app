@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { MAP_BOX_BASE_URL } from '../../api/config.js'
+import { MAP_BOX_BASE_URL } from '../api/config.js'
+
 const initialState = { status: 'idle', error: null }
 
 /**

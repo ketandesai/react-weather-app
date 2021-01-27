@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { IP_LOOKUP_URL } from '../../api/config.js'
+import { IP_LOOKUP_URL } from '../api/config'
 
 const initialState = { status: 'idle', error: null }
 
@@ -21,12 +21,6 @@ const locationSlice = createSlice({
     locationUpdated(state, action) {
       state.location = action.payload
       state.status = 'success'
-      /*const { city, lat, lon } = action.payload;
-      const existingPost = state.entities[id];
-      if (existingPost) {
-        existingPost.title = title;
-        existingPost.content = content;
-      }*/
     },
   },
   initialState,

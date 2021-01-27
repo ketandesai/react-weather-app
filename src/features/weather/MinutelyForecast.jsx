@@ -1,5 +1,5 @@
 import React from "react";
-import { selectMinutelyWeather } from "./weatherSlice";
+import { selectMinutelyWeather } from "../../reducers/weatherSlice";
 import { useSelector } from "react-redux";
 
 export const MinutelyForecast = () => {
