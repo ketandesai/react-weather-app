@@ -21,11 +21,10 @@ export const DailyForecast = () => {
       </b>
       <img
         className="mr-3"
-        src={`https://openweathermap.org/img/wn/${data?.weather[0].icon}.png`}
+        src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
         alt=""
       />
 
-      <br />
       <span>{data?.weather[0].description}</span>
 
       <div>
@@ -33,9 +32,7 @@ export const DailyForecast = () => {
         {" - "}
         <Temperature degrees={data?.temp.min} units={units} />
       </div>
-      {data?.rain > 0 ? <Accumulation amount={data?.rain} /> : ""}
-      <br />
-      {data?.snow > 0 ? <Accumulation amount={data?.snow} /> : ""}
+      <Accumulation rain={data?.rain} snow={data?.snow} />
       {data?.pop > 0 ? <div>{Math.round(data?.pop * 100)} %</div> : ""}
     </div>
   ));

@@ -12,7 +12,7 @@ export const MinutelyForecast = () => {
   let content = "No precipitation in the next hour";
   if (sum > 0) {
     let precipitation = Number.parseFloat(sum / 25.4).toFixed(1);
-    content = `${precipitation} in the next hour`;
+    content = `${precipitation} in within the hour`;
   }
   return <>{content}</>;
 };

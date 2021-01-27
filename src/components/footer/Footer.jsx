@@ -1,5 +1,5 @@
 import React from "react";
-import { FaHeart, FaReact } from "react-icons/fa";
+import { FaHeart, FaReact} from "react-icons/fa";
 import moment from "moment-timezone";
 import { selectTheme } from "../../reducers/themeSlice";
 import { useSelector } from "react-redux";

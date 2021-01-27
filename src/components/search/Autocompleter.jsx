@@ -35,7 +35,6 @@ export const Autocompleter = () => {
   }, [userInput, dispatch, locationSelected, lat, lon]);
 
   const onChange = (e) => {
-    console.log("onChange ");
     const suggestions = places?.map((data) => data.place_name);
     setActiveSuggestion(0);
     setFilteredSuggestions(suggestions);
@@ -45,11 +44,9 @@ export const Autocompleter = () => {
   };
 
   const onClick = (e) => {
-    console.log("onClick = " + e.currentTarget.innerText);
     const placeSelected = places.find(
       (element) => element.place_name === e.currentTarget.innerText
     );
-    console.log("place selected = " + placeSelected);
     setLon(placeSelected?.center[0]);
     setLat(placeSelected?.center[1]);
     setLocationSelected(e.currentTarget.innerText);
@@ -57,13 +54,6 @@ export const Autocompleter = () => {
     setFilteredSuggestions([]);
     setShowSuggestions(false);
     setUserInput(e.currentTarget.innerText);
-    console.log(
-      "placeSelected lat =  " +
-        placeSelected?.center[1] +
-        ", lon= " +
-        placeSelected?.center[0]
-    );
-    console.log("lat =  " + lat + ", lon= " + lon);
   };
 
   const onKeyDown = (e) => {

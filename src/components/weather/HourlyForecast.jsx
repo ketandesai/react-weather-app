@@ -11,7 +11,22 @@ export const HourlyForecast = () => {
 
   let content = weather?.map((data) => (
     <div key={data?.dt}>
-      <span>
+      <div>
+        <img
+          src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
+          alt={`${data?.weather[0].description}`}
+        />
+      </div>
+      <p>
+        <Temperature degrees={data?.temp} units={units} />
+      </p>
+      <p>
+        {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : " ."}
+      </p>
+      <p> 
+        {data?.rain ? <Accumulation rain={data?.rain ? data?.rain["1h"] : 0} snow={data?.snow ? data?.snow["1h"] : 0}/> : " ."}
+      </p>
+      <p>
         <b>
           <TimeDateComponent
             seconds={data?.dt}
@@ -20,20 +35,7 @@ export const HourlyForecast = () => {
             options={null}
           />
         </b>
-        <img
-          src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
-          alt={`${data?.weather[0].description}`}
-        />
-      </span>
-      <br />
-      <span>
-        <Temperature degrees={data?.temp} units={units} />
-      </span>
-      <span>
-        {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : ""}
-        {data?.rain ? <Accumulation amount={data?.rain["1h"]} /> : ""}
-        {data?.snow ? <Accumulation amount={data?.snow["1h"]} /> : ""}
-      </span>
+      </p>
     </div>
   ));
   return (

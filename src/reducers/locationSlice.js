@@ -9,7 +9,6 @@ const initialState = { status: 'idle', error: null }
 export const fetchLocation = createAsyncThunk(
   'location/fetchLocation',
   async () => {
-    console.log('fetching location from IP')
     const response = await fetch(IP_LOOKUP_URL)
     return response.json()
   }
@@ -43,7 +42,5 @@ const locationSlice = createSlice({
 export const selectLocation = (state) => state.location?.location
 export const selectStatus = (state) => state.location?.status
 export const selectError = (state) => state.location.error
-
 export const { locationUpdated } = locationSlice.actions
-
 export default locationSlice.reducer

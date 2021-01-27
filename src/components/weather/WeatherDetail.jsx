@@ -2,6 +2,7 @@ import React from "react";
 import { TimeDateComponent } from "./TimeDateComponent";
 import { Temperature } from "./Temperature";
 import { Accumulation } from "./Accumulation";
+import { MinutelyForecast } from "./MinutelyForecast";
 
 export const WeatherDetail = ({ weather, location, units }) => {
   let region = location?.region ? `, ${location.region}` : "";
@@ -48,18 +49,9 @@ export const WeatherDetail = ({ weather, location, units }) => {
             <span className="font-bold">
               <Temperature degrees={weather?.feels_like} units={units} />
             </span>
-            <p>
-              {weather?.rain ? (
-                <Accumulation amount={weather?.rain["1h"]} />
-              ) : (
-                ""
-              )}
-              {weather?.snow ? (
-                <Accumulation amount={weather?.snow["1h"]} />
-              ) : (
-                ""
-              )}
-            </p>
+            <br />
+            <span><MinutelyForecast /></span>
+            
           </div>
         </div>
       </div>

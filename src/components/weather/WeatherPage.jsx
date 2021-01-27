@@ -8,7 +8,6 @@ import {
 import { fetchLocation, selectLocation } from "../../reducers/locationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { WeatherDetail } from "./WeatherDetail";
-import { MinutelyForecast } from "./MinutelyForecast";
 import { HourlyForecast } from "./HourlyForecast";
 import { DailyForecast } from "./DailyForecast";
 import { WeatherAlert } from "./WeatherAlert";
@@ -41,9 +40,9 @@ export const WeatherPage = () => {
           units={units}
           location={location}
         />
-        <MinutelyForecast />
         <div className="sm:grid-cols-2">
           <HourlyForecast />
+          <hr />
           <DailyForecast />
         </div>
       </div>
