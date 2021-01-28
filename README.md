@@ -206,13 +206,13 @@ There are many weather applications available today. The goal was to learn from 
 
 - Open pull request with improvements.
 
-- If you have any new idea, check the **[feature request](https://github.com/ketandesai/react-weather-app/main/.github/ISSUE_TEMPLATE/feature_request.md)** template to create a request.
+- If you have any new idea, check the **[feature request](https://github.com/ketandesai/react-weather-app/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)** template to create a request.
 
-- If you found any issue or a bug, check the **[bug report](https://github.com/ketandesai/react-weather-app/main/.github/ISSUE_TEMPLATE/bug_report.md)** template to create a report.
+- If you found any issue or a bug, check the **[bug report](https://github.com/ketandesai/react-weather-app/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)** template to create a report.
 
 ## 📃 License
 
-Have a look at the **[license file](https://github.com/ketandesai/react-weather-app/main/LICENSE)** for details
+Have a look at the **[license file](https://github.com/ketandesai/react-weather-app/blob/main/LICENSE)** for details
 
 ## 📧 Contact
 
