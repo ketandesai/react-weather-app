@@ -1,12 +1,31 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { TimeDateComponent } from './TimeDateComponent'
 import { Temperature } from './Temperature'
 import { MinutelyForecast } from './MinutelyForecast'
 import Toggle from 'react-toggle'
+import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
+import {
+  selectCurrentWeather,
+  selectUnits,
+  unitsUpdated,
+} from '../../reducers/weatherSlice'
+import { selectLocation } from '../../reducers/locationSlice'
 
-export const WeatherDetail = ({ weather, location, units }) => {
+export const WeatherDetail = () => {
+  const dispatch = useDispatch()
+  const units = useSelector(selectUnits)
+  const weather = useSelector(selectCurrentWeather)
+  const location = useSelector(selectLocation)
   let region = location?.region ? `, ${location.region}` : ''
   let country = location?.country ? `, ${location.country}` : ''
+
+  const onUnitsChanged = () => {
+    units === 'imperial'
+      ? dispatch(unitsUpdated('metric'))
+      : dispatch(unitsUpdated('imperial'))
+  }
+
   return (
     <>
       <div>
@@ -23,7 +42,13 @@ export const WeatherDetail = ({ weather, location, units }) => {
         />
       </div>
       <div>
-        <Toggle />
+        <Toggle
+          icons={{
+            checked: <RiFahrenheitFill />,
+            unchecked: <RiCelsiusFill />,
+          }}
+          onChange={onUnitsChanged}
+        />
       </div>
       <div className="sm:flex-col md:flex md:flex-row justify-between my-2 px-6 sm:mt-5 sm:mb-5 sm:px-4">
         <div className="flex-col sm:w-full lg:w-1/2">
@@ -40,7 +65,7 @@ export const WeatherDetail = ({ weather, location, units }) => {
 
             <div>
               <span className="text-6xl font-bold">
-                <Temperature degrees={weather?.temp} units={units} />{' '}
+                <Temperature degrees={weather?.temp} showUnits={true} />{' '}
               </span>
             </div>
           </div>
@@ -50,7 +75,7 @@ export const WeatherDetail = ({ weather, location, units }) => {
           <div className="text-sm sm:text-lg ml-8 mt-3 sm:mt-0">
             Feels like:{' '}
             <span className="font-bold">
-              <Temperature degrees={weather?.feels_like} units={units} />
+              <Temperature degrees={weather?.feels_like} showUnits={true} />
             </span>
             <br />
             <span>

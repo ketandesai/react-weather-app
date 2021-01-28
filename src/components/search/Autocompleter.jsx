@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Autocompleter.css'
 import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
 import { locationUpdated } from '../../reducers/locationSlice'
-import { fetchWeather } from '../../reducers/weatherSlice'
-import { OPEN_WEATHER_BASE_URL } from '../../api/config.js'
 
 const ENTER_KEY = 13
 const UP_ARROW_KEY = 38
@@ -25,14 +23,12 @@ export const Autocompleter = () => {
     if (userInput) {
       dispatch(fetchForward(userInput))
       if (locationSelected && lat && lon) {
-        let allWeatherUrl = `${OPEN_WEATHER_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=imperial`
-        dispatch(fetchWeather(allWeatherUrl))
         dispatch(
           locationUpdated({ lat: lat, lon: lon, city: locationSelected })
         )
       }
     }
-  }, [userInput, dispatch, locationSelected, lat, lon])
+  }, [dispatch, userInput, locationSelected, lat, lon])
 
   const onChange = (e) => {
     const suggestions = places?.map((data) => data.place_name)

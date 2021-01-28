@@ -1,13 +1,12 @@
-import React from "react";
-import { TimeDateComponent } from "./TimeDateComponent";
-import { Temperature } from "./Temperature";
-import { selectHourlyWeather } from "../../reducers/weatherSlice";
-import { useSelector } from "react-redux";
-import { Accumulation } from "./Accumulation";
+import React from 'react'
+import { TimeDateComponent } from './TimeDateComponent'
+import { Temperature } from './Temperature'
+import { selectHourlyWeather } from '../../reducers/weatherSlice'
+import { useSelector } from 'react-redux'
+import { Accumulation } from './Accumulation'
 
 export const HourlyForecast = () => {
-  const weather = useSelector(selectHourlyWeather);
-  let units = "imperial";
+  const weather = useSelector(selectHourlyWeather)
 
   let content = weather?.map((data) => (
     <div key={data?.dt}>
@@ -18,13 +17,18 @@ export const HourlyForecast = () => {
         />
       </div>
       <p>
-        <Temperature degrees={data?.temp} units={units} />
+        <Temperature degrees={data?.temp} showUnits={true} />
       </p>
+      <p>{data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : ' .'}</p>
       <p>
-        {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : " ."}
-      </p>
-      <p> 
-        {data?.rain ? <Accumulation rain={data?.rain ? data?.rain["1h"] : 0} snow={data?.snow ? data?.snow["1h"] : 0}/> : " ."}
+        {data?.rain ? (
+          <Accumulation
+            rain={data?.rain ? data?.rain['1h'] : 0}
+            snow={data?.snow ? data?.snow['1h'] : 0}
+          />
+        ) : (
+          ' .'
+        )}
       </p>
       <p>
         <b>
@@ -37,10 +41,10 @@ export const HourlyForecast = () => {
         </b>
       </p>
     </div>
-  ));
+  ))
   return (
     <div className="grid md:grid-cols-7 sm:grid-cols-1 gap-3">
       {content?.slice(1, 8)}
     </div>
-  );
-};
+  )
+}

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { IP_LOOKUP_URL } from '../api/config'
 
+const URL = 'https://extreme-ip-lookup.com/json'
 const initialState = { status: 'idle', error: null }
 
 /**
@@ -9,20 +9,20 @@ const initialState = { status: 'idle', error: null }
 export const fetchLocation = createAsyncThunk(
   'location/fetchLocation',
   async () => {
-    const response = await fetch(IP_LOOKUP_URL)
+    const response = await fetch(URL)
     return response.json()
   }
 )
 
 const locationSlice = createSlice({
   name: 'location',
+  initialState,
   reducers: {
     locationUpdated(state, action) {
       state.location = action.payload
       state.status = 'success'
     },
   },
-  initialState,
   extraReducers: {
     [fetchLocation.pending]: (state, action) => {
       state.status = 'pending'
