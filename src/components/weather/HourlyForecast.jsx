@@ -17,7 +17,7 @@ export const HourlyForecast = () => {
         />
       </div>
       <p>
-        <Temperature degrees={data?.temp} showUnits={true} />
+        <Temperature degrees={data?.temp} showSymbol={true} />
       </p>
       <p>{data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : ' .'}</p>
       <p>

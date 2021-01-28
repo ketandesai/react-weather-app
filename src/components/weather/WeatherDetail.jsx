@@ -65,7 +65,15 @@ export const WeatherDetail = () => {
 
             <div>
               <span className="text-6xl font-bold">
-                <Temperature degrees={weather?.temp} showUnits={true} />{' '}
+                <Temperature degrees={weather?.temp} />{' '}
+              </span>
+              <span>
+                {' '}
+                {units === 'imperial' ? (
+                  <RiFahrenheitFill />
+                ) : (
+                  <RiCelsiusFill />
+                )}
               </span>
             </div>
           </div>
