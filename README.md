@@ -109,7 +109,6 @@ A quick look at the top-level files and directories in this react-weather-app pr
 	├── components
   ├── reducers
 	├── fonts
-	├── sass
 	├── styles
 	├── tests
 ├── App.js
