@@ -102,21 +102,18 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 A quick look at the top-level files and directories in this react-weather-app project.
 
 ```
-├── api
 ├── public
 ├── src
+	├── api
+	├──	app
 	├── components
-	├──	containers
-	├── context
+  ├── reducers
 	├── fonts
 	├── sass
 	├── styles
 	├── tests
-	├── utils
-	├── App.js
-	├── index.js
-	├── serviceWorker.js
-├── tailwind.config.js
+├── App.js
+├── index.js
 ```
 
 1.  **`public`**: This directory contain all the assets like images, icons, manifest (PWA), and favicons.
