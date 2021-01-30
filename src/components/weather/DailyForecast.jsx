@@ -1,5 +1,5 @@
 import React from 'react'
-import { TimeDateComponent } from './TimeDateComponent'
+import { DateComponent } from './DateComponent'
 import { Temperature } from './Temperature'
 import { selectDailyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
@@ -10,22 +10,17 @@ export const DailyForecast = () => {
   let units = 'imperial'
   let options = { weekday: 'short' }
   let content = weather?.map((data) => (
-    <div key={data.dt}>
+    <div key={data.dt} className="container mx-auto hover:shadow-md">
       <b>
-        <TimeDateComponent
-          seconds={data?.dt}
-          showDate={true}
-          showTime={false}
-          options={options}
-        />
+        <DateComponent seconds={data?.dt} options={options} />
       </b>
       <img
-        className="mr-3"
+        className="float-left"
         src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
         alt=""
       />
 
-      <span>{data?.weather[0].description}</span>
+      <div>{data?.weather[0].description}</div>
 
       <div>
         <Temperature degrees={data?.temp.max} showSymbol={true} />
@@ -39,6 +34,8 @@ export const DailyForecast = () => {
   //removes weather for today, since it is redundant
   let firstDay = content?.shift()
   return (
-    <div className="grid md:grid-cols-7 sm:grid-cols-1 gap-3">{content}</div>
+    <div className="grid md:grid-cols-7 gap-3 divide-y md:divide-x md:divide-y-0">
+      {content}
+    </div>
   )
 }

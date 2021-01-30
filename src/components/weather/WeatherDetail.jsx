@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TimeDateComponent } from './TimeDateComponent'
+import { DateComponent } from './DateComponent'
+import { TimeComponent } from './TimeComponent'
 import { Temperature } from './Temperature'
 import { MinutelyForecast } from './MinutelyForecast'
 import Toggle from 'react-toggle'
@@ -35,11 +36,8 @@ export const WeatherDetail = () => {
           {country}
         </b>
         <br></br>
-        <TimeDateComponent
-          seconds={weather?.dt}
-          showDate={true}
-          showTime={true}
-        />
+        <DateComponent seconds={weather?.dt} /> |{' '}
+        <TimeComponent seconds={weather?.dt} />
       </div>
       <div>
         <Toggle
