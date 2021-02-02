@@ -61,7 +61,7 @@ export const WeatherDetail = () => {
               </p>
             </div>
 
-            <div>
+            <div className="flex">
               <span className="text-6xl font-bold">
                 <Temperature degrees={weather?.temp} />{' '}
               </span>
@@ -79,10 +79,12 @@ export const WeatherDetail = () => {
 
         <div className="flex flex-col justify-center items-center sm:mt-6 sm:w-full lg:w-1/2">
           <div className="text-sm sm:text-lg ml-8 mt-3 sm:mt-0">
-            Feels like:{' '}
-            <span className="font-bold">
-              <Temperature degrees={weather?.feels_like} showUnits={true} />
-            </span>
+            <div className="flex">
+              Feels like:{'  '}
+              <span className="flex font-bold">
+                <Temperature degrees={weather?.feels_like} showUnits={true} />
+              </span>
+            </div>
             <br />
             <span>
               <MinutelyForecast />
