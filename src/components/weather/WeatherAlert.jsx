@@ -1,5 +1,6 @@
 import React from 'react'
-import { TimeDateComponent } from './TimeDateComponent'
+import { DateComponent } from './DateComponent'
+import { TimeComponent } from './TimeComponent'
 import { selectWeatherAlerts } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
 
@@ -9,23 +10,18 @@ export const WeatherAlert = () => {
   let content = weather?.map((alert, index) => (
     <div
       key={`${alert.event}_${index}`}
-      class="border border-blue-300 shadow rounded-md p-4 max-w-2xl w-full mx-auto"
+      class="border border-red-300 shadow rounded-md p-4 max-w-2xl w-full mx-auto"
     >
       <div className="animate-pulse flex space-x-4">
-        <div>
+        <div className="rounded-full bg-red-400 h-12 w-12"></div>
+        <div className="flex-1 space-y-4 py-1">
           <b>{alert.event}</b>
-          <hr />
-          <TimeDateComponent
-            seconds={alert.start}
-            showDate={true}
-            showTime={true}
-          />{' '}
-          -{' '}
-          <TimeDateComponent
-            seconds={alert.end}
-            showDate={true}
-            showTime={true}
-          />
+          <div>
+            <DateComponent seconds={alert.start} />{' '}
+            <TimeComponent seconds={alert.start} /> -{' '}
+            <DateComponent seconds={alert.end} />{' '}
+            <TimeComponent seconds={alert.end} />{' '}
+          </div>
           <hr />
           <span key={alert.description}>{alert.description}</span>
         </div>
