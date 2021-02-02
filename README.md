@@ -1,6 +1,6 @@
 # Table of Contents
 
-- **[Getting Started](https://github.com/ketandesai/react-weather-app#-getting-started)**
+- **[Working Demo](https://github.com/ketandesai/react-weather-app#-getting-started)**
 
 - **[Getting Started](https://github.com/ketandesai/react-weather-app#-getting-started)**
 
@@ -30,7 +30,7 @@
 
 # Working Demo
 
-- For a working version of this application visit the following **[link](https://react-weather-app-orcin.vercel.app)**
+For a working version of this application visit the following **[link](https://react-weather-app-orcin.vercel.app)**
 
 # 🚀 Getting Started
 
