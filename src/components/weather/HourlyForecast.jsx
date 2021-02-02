@@ -18,7 +18,7 @@ export const HourlyForecast = () => {
         />
         <Temperature degrees={data?.temp} showSymbol={true} />
         <div>
-          {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : '10 %'}
+          {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : ''}
         </div>
         <div>
           {data?.rain ? (
@@ -27,7 +27,7 @@ export const HourlyForecast = () => {
               snow={data?.snow ? data?.snow['1h'] : 0}
             />
           ) : (
-            '0.5 in'
+            ''
           )}
         </div>
       </div>
