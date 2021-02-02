@@ -1,7 +1,5 @@
 # Table of Contents
 
-- **[Working Demo](https://github.com/ketandesai/react-weather-app#-getting-started)**
-
 - **[Getting Started](https://github.com/ketandesai/react-weather-app#-getting-started)**
 
 - **[What's inside?](https://github.com/ketandesai/react-weather-app#-whats-inside)**
@@ -27,10 +25,6 @@
 - **[Featured](https://github.com/ketandesai/react-weather-app#-featured-on)**
 
 - **[Acknowledgements](https://github.com/ketandesai/react-weather-app#-acknowledgements)**
-
-# Working Demo
-
-For a working version of this application visit the following **[link](https://react-weather-app-orcin.vercel.app)**
 
 # 🚀 Getting Started
 
@@ -199,6 +193,8 @@ There are many weather applications available today. The goal was to learn from 
 ## 🏎 Roadmap
 
 - [x] Add docker integration
+
+- [ ] Implement back end proxy server to handle data access
 
 - [ ] Unit Testing
 
