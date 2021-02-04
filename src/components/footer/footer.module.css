@@ -1,0 +1,18 @@
+.light {
+  background: #e8ebee;
+}
+
+.dark {
+  background: #292929;
+  color: white;
+}
+
+.heart {
+  color: #ed2324;
+  font-size: 1rem;
+}
+
+.react {
+  color: #2acef7;
+  font-size: 1rem;
+}

@@ -98,7 +98,7 @@ export const Autocompleter = () => {
     }
   }
   return (
-    <>
+    <div className="search">
       <div className="space-y-0">
         <input
           style={{
@@ -114,6 +114,6 @@ export const Autocompleter = () => {
         />
         {suggestionsListComponent}
       </div>
-    </>
+    </div>
   )
 }

@@ -38,9 +38,7 @@ export const WeatherPage = () => {
 
   return (
     <>
-      <div className="search">
-        <Autocompleter />
-      </div>
+      <Autocompleter />
       <div className="weather">
         <WeatherDetail />
         <div className="grid gap-2 grid-cols-2 md:grid-cols-1 divide-x md:divide-x-0 md:divide-y">
