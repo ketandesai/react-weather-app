@@ -1,18 +1,18 @@
-import React from "react";
-import Toggle from "react-toggle";
-import "./Header.css";
-import { FaSun, FaMoon } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTheme, themeUpdated } from "../../reducers/themeSlice";
+import React from 'react'
+import Toggle from 'react-toggle'
+import IconComponent from '../icon/IconComponent'
+import './Header.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
 
 export const Header = () => {
-  const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
+  const dispatch = useDispatch()
+  const theme = useSelector(selectTheme)
 
   const onThemeChanged = () => {
-    let payload = theme === "light" ? "dark" : "light";
-    dispatch(themeUpdated(payload));
-  };
+    let currentTheme = theme === 'light' ? 'dark' : 'light'
+    dispatch(themeUpdated(currentTheme))
+  }
 
   return (
     <header className="flex justify-between items-center px-5 py-5">
@@ -29,13 +29,13 @@ export const Header = () => {
             height="80"
             viewBox="0 0 250 250"
             style={{
-              fill: "#70B7FD",
-              color: "#fff",
-              position: "absolute",
+              fill: '#70B7FD',
+              color: '#fff',
+              position: 'absolute',
               top: 0,
               border: 0,
               left: 0,
-              transform: "scale(-1, 1)"
+              transform: 'scale(-1, 1)',
             }}
             aria-hidden="true"
           >
@@ -43,7 +43,7 @@ export const Header = () => {
             <path
               d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
               fill="currentColor"
-              style={{ transformOrigin: "130px 106px" }}
+              style={{ transformOrigin: '130px 106px' }}
               className="octo-arm"
             ></path>
             <path
@@ -57,10 +57,13 @@ export const Header = () => {
 
       <div>
         <Toggle
-          icons={{ checked: <FaSun />, unchecked: <FaMoon /> }}
+          icons={{
+            checked: <IconComponent iconType={'light'} />,
+            unchecked: <IconComponent iconType={'dark'} />,
+          }}
           onChange={onThemeChanged}
         />
       </div>
     </header>
-  );
-};
+  )
+}
