@@ -1,6 +1,6 @@
 import React from 'react'
 import Toggle from 'react-toggle'
-import IconComponent from '../icon/IconComponent'
+import ThemeIcon from '../icon/ThemeIcon'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
@@ -58,8 +58,8 @@ export const Header = () => {
       <div>
         <Toggle
           icons={{
-            checked: <IconComponent iconType={'light'} />,
-            unchecked: <IconComponent iconType={'dark'} />,
+            checked: <ThemeIcon iconType={'light'} />,
+            unchecked: <ThemeIcon iconType={'dark'} />,
           }}
           onChange={onThemeChanged}
         />

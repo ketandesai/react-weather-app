@@ -56,7 +56,7 @@ export const Autocompleter = () => {
     if (e.keyCode === ENTER_KEY) {
       setActiveSuggestion(0)
       setShowSuggestions(false)
-      setUserInput(filteredSuggestions[activeSuggestion])
+      //setUserInput(filteredSuggestions[activeSuggestion])
     } else if (e.keyCode === UP_ARROW_KEY) {
       if (activeSuggestion === 0) {
         return

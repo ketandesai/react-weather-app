@@ -18,7 +18,6 @@ const weatherSlice = createSlice({
   initialState,
   reducers: {
     unitsUpdated(state, action) {
-      console.log(`unitsUpdated ${action.payload}`)
       state.units = action.payload
     },
   },

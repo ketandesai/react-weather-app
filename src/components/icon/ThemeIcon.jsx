@@ -2,7 +2,7 @@ import React from 'react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import classes from './icon.module.css'
 
-const IconComponent = ({ iconType }) => {
+const ThemeIcon = ({ iconType }) => {
   return (
     <div className={classes.wrapper}>
       {iconType === 'light' ? (
@@ -18,4 +18,4 @@ const IconComponent = ({ iconType }) => {
   )
 }
 
-export default IconComponent
+export default ThemeIcon

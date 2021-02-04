@@ -5,21 +5,19 @@ import { TimeComponent } from './TimeComponent'
 import { Temperature } from './Temperature'
 import { MinutelyForecast } from './MinutelyForecast'
 import Toggle from 'react-toggle'
-import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
+import DegreeIcon from '../icon/DegreeIcon'
 import {
   selectCurrentWeather,
   selectUnits,
   unitsUpdated,
 } from '../../reducers/weatherSlice'
-import { selectLocation } from '../../reducers/locationSlice'
+import Location from '../location/Location'
+import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
 
 export const WeatherDetail = () => {
   const dispatch = useDispatch()
   const units = useSelector(selectUnits)
   const weather = useSelector(selectCurrentWeather)
-  const location = useSelector(selectLocation)
-  let region = location?.region ? `, ${location.region}` : ''
-  let country = location?.country ? `, ${location.country}` : ''
 
   const onUnitsChanged = () => {
     units === 'imperial'
@@ -30,20 +28,16 @@ export const WeatherDetail = () => {
   return (
     <>
       <div>
-        <b>
-          {location?.city}
-          {region}
-          {country}
-        </b>
-        <br></br>
+        <Location />
+        <br />
         <DateComponent seconds={weather?.dt} /> |{' '}
         <TimeComponent seconds={weather?.dt} />
       </div>
       <div>
         <Toggle
           icons={{
-            checked: <RiFahrenheitFill />,
-            unchecked: <RiCelsiusFill />,
+            checked: <DegreeIcon iconType={'F'} />,
+            unchecked: <DegreeIcon iconType={'C'} />,
           }}
           onChange={onUnitsChanged}
         />
@@ -52,10 +46,15 @@ export const WeatherDetail = () => {
         <div className="flex-col sm:w-full lg:w-1/2">
           <div className="flex flex-row justify-center sm:justify-start sm:items-center">
             <div className="flex flex-col justify-center items-center">
-              <img
-                src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
-                alt=""
-              />
+              {weather ? (
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
+                  alt=""
+                />
+              ) : (
+                ''
+              )}
+
               <p className="hidden sm:flex sm:flex-no-wrap font-medium -mt-2 ml-3 capitalize">
                 {weather?.weather[0].description}
               </p>
@@ -65,7 +64,7 @@ export const WeatherDetail = () => {
               <span className="text-6xl font-bold">
                 <Temperature degrees={weather?.temp} />{' '}
               </span>
-              <span>
+              <span className="text-xl font-bold">
                 {' '}
                 {units === 'imperial' ? (
                   <RiFahrenheitFill />

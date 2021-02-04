@@ -7,7 +7,6 @@ import { Accumulation } from './Accumulation'
 
 export const DailyForecast = () => {
   const weather = useSelector(selectDailyWeather)
-  let units = 'imperial'
   let options = { weekday: 'short' }
   let content = weather?.map((data) => (
     <div key={data.dt} className="container mx-auto hover:shadow-md">
