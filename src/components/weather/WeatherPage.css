@@ -20,6 +20,7 @@ WeatherPage {
   background: linear-gradient(135deg, #0b63f6, #003cc5);
   background: linear-gradient(135deg, #2f80ed, #b2ffda);
   background: linear-gradient(135deg, #737dfe, #ffcac9);
+  background: linear-gradient(135deg, #003cc5, #000066);
 
   border-radius: 20px;
   padding: 20px 20px 20px 20px;

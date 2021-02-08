@@ -4,6 +4,16 @@ import moment from 'moment-timezone'
 import { selectTheme } from '../../reducers/themeSlice'
 import { useSelector } from 'react-redux'
 import classes from './footer.module.css'
+import styled from 'styled-components'
+
+const HeartSpan = styled.span`
+  color: #ed2324;
+  font-size: 1rem;
+`
+
+const ReactSpan = styled(HeartSpan)`
+  color: #2acef7;
+`
 
 export const Footer = () => {
   const theme = useSelector(selectTheme)
@@ -14,23 +24,13 @@ export const Footer = () => {
       >
         <p className="flex flex-no-wrap justify-center items-center my-2 sm:my-0 w-full sm:w-1/2">
           Made with&nbsp;
-          <span
-            title="Love"
-            role="img"
-            aria-label="Love"
-            className={classes.heart}
-          >
+          <HeartSpan title="Love" role="img" aria-label="Love">
             <FaHeart />
-          </span>
+          </HeartSpan>
           &nbsp;using&nbsp;
-          <span
-            title="React"
-            role="img"
-            aria-label="React"
-            className={classes.react}
-          >
+          <ReactSpan title="React" role="img" aria-label="React">
             <FaReact />
-          </span>
+          </ReactSpan>
         </p>
       </div>
       <p className="mx-auto text-center text-sm">

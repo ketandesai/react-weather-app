@@ -3,10 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Autocompleter.css'
 import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
 import { locationUpdated } from '../../reducers/locationSlice'
+import styled, { css } from 'styled-components'
 
 const ENTER_KEY = 13
 const UP_ARROW_KEY = 38
 const DOWN_ARROW_KEY = 40
+
+const SearchContainer = styled.div`
+  max-width: 800px;
+  width: 90%;
+  margin: 50px auto;
+`
 
 export const Autocompleter = () => {
   const dispatch = useDispatch()
@@ -98,7 +105,7 @@ export const Autocompleter = () => {
     }
   }
   return (
-    <div className="search">
+    <SearchContainer>
       <div className="space-y-0">
         <input
           style={{
@@ -114,6 +121,6 @@ export const Autocompleter = () => {
         />
         {suggestionsListComponent}
       </div>
-    </div>
+    </SearchContainer>
   )
 }

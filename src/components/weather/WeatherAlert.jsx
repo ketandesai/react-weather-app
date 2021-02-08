@@ -10,7 +10,7 @@ export const WeatherAlert = () => {
   let content = weather?.map((alert, index) => (
     <div
       key={`${alert.event}_${index}`}
-      class="border border-red-300 shadow rounded-md p-4 max-w-2xl w-full mx-auto"
+      className="border border-red-300 shadow rounded-md p-4 max-w-2xl w-full mx-auto"
     >
       <div className="animate-pulse flex space-x-4">
         <div className="rounded-full bg-red-400 h-12 w-12"></div>
