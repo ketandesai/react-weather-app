@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Autocompleter.css'
 import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
 import { locationUpdated } from '../../reducers/locationSlice'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const ENTER_KEY = 13
 const UP_ARROW_KEY = 38

@@ -17,6 +17,7 @@ const ReactSpan = styled(HeartSpan)`
 
 export const Footer = () => {
   const theme = useSelector(selectTheme)
+
   return (
     <footer className={theme === 'dark' ? classes.dark : classes.light}>
       <div

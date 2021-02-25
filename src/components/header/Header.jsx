@@ -8,7 +8,7 @@ import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
 export const Header = () => {
   const dispatch = useDispatch()
   const theme = useSelector(selectTheme)
-
+  
   const onThemeChanged = () => {
     let currentTheme = theme === 'light' ? 'dark' : 'light'
     dispatch(themeUpdated(currentTheme))
@@ -57,6 +57,7 @@ export const Header = () => {
 
       <div>
         <Toggle
+          checked={theme === 'dark'}
           icons={{
             checked: <ThemeIcon iconType={'light'} />,
             unchecked: <ThemeIcon iconType={'dark'} />,

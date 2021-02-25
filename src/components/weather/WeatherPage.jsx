@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-//import './WeatherPage.css'
 import { selectTheme } from '../../reducers/themeSlice'
 import { fetchWeather, selectUnits } from '../../reducers/weatherSlice'
 import { fetchLocation, selectLocation } from '../../reducers/locationSlice'
