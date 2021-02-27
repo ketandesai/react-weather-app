@@ -30,6 +30,18 @@ const WeatherContainer = styled.div`
     `}
 `
 
+const Button = styled.button`
+  background: var(--color-primary);
+`
+
+const Paragraph = styled.p`
+  font-size: var(--font-size-small);
+`
+
+const OpeningParagraph = styled.p`
+  font-size: var(--font-size-medium);
+`
+
 export const WeatherPage = () => {
   const theme = useSelector(selectTheme)
   const dispatch = useDispatch()

@@ -5,6 +5,7 @@
 .dark {
   background: #292929;
   color: white;
+  display: block;
 }
 
 .heart {
