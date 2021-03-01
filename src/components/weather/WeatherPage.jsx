@@ -50,7 +50,7 @@ export const WeatherPage = () => {
   return (
     <>
       <Autocompleter />
-      <WeatherContainer dark={theme === 'dark'}>
+      <WeatherContainer>
         <WeatherDetail />
         <div className="grid gap-2 grid-cols-2 md:grid-cols-1 divide-x md:divide-x-0 md:divide-y">
           <HourlyForecast />

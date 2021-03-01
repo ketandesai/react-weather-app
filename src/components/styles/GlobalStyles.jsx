@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 // Create a `GlobalStyles` component.
 // I usually already have this, to include a CSS
@@ -7,7 +7,13 @@ export const GlobalStyles = createGlobalStyle`
   html {
     --color-text: black;
     --color-background: white;
-    --color-primary: rebeccapurple;
+    
+    ${(props) =>
+      props.dark &&
+      css`
+        --color-text: white;
+        --color-background: black;
+      `}
 
     --font-size-small: 10px;
     --font-size-medium: 12px;
