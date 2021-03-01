@@ -18,16 +18,6 @@ const WeatherContainer = styled.div`
   width: 90%;
   margin: 50px auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
-  ${(props) =>
-    props.dark &&
-    css`
-      background: linear-gradient(135deg, #402662, #3900a6);
-      background: linear-gradient(135deg, #6699ff, #000066);
-      background: linear-gradient(135deg, #b2ffda, #000066);
-      background: linear-gradient(135deg, #0b63f6, #003cc5);
-      background: linear-gradient(135deg, #003cc5, #000066);
-    `}
 `
 
 const Button = styled.button`

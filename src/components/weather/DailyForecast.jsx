@@ -9,7 +9,7 @@ export const DailyForecast = () => {
   const weather = useSelector(selectDailyWeather)
   let options = { weekday: 'short' }
   let content = weather?.map((data) => (
-    <div key={data.dt} className="container mx-auto hover:shadow-md">
+    <div key={data.dt} className="container mx-auto">
       <b>
         <DateComponent seconds={data?.dt} options={options} />
       </b>
@@ -19,15 +19,21 @@ export const DailyForecast = () => {
         alt=""
       />
 
-      <div>{data?.weather[0].description}</div>
-
       <div>
-        <Temperature degrees={data?.temp.max} showSymbol={true} />
-        {' - '}
+        <Temperature degrees={data?.temp.max} showSymbol={true} />{' '}
         <Temperature degrees={data?.temp.min} showSymbol={true} />
       </div>
-      <Accumulation rain={data?.rain} snow={data?.snow} />
-      {data?.pop > 0 ? <div>{Math.round(data?.pop * 100)} %</div> : ''}
+
+      <div className="float-left">{data?.weather[0].description}</div>
+      <br />
+      {data?.pop > 0 ? (
+        <div className="float-right">{Math.round(data?.pop * 100)} %</div>
+      ) : (
+        ''
+      )}
+      <div className="float-right">
+        <Accumulation rain={data?.rain} snow={data?.snow} />
+      </div>
     </div>
   ))
   //removes weather for today, since it is redundant

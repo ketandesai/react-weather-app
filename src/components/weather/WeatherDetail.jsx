@@ -84,7 +84,6 @@ export const WeatherDetail = () => {
                 <Temperature degrees={weather?.feels_like} showUnits={true} />
               </span>
             </div>
-            <br />
             <span>
               <MinutelyForecast />
             </span>

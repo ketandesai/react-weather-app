@@ -9,13 +9,17 @@ export const HourlyForecast = () => {
   const weather = useSelector(selectHourlyWeather)
 
   let content = weather?.map((data) => (
-    <div key={data?.dt} className="container mx-auto px-4 hover:shadow-md">
+    <div key={data?.dt} className="container mx-auto">
+      <b>
+        <TimeComponent seconds={data?.dt} options={{ hour: 'numeric' }} />
+      </b>
+      <img
+        className="float-left"
+        src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
+        alt={`${data?.weather[0].description}`}
+      />
+
       <div>
-        <img
-          className="float-left"
-          src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
-          alt={`${data?.weather[0].description}`}
-        />
         <Temperature degrees={data?.temp} showSymbol={true} />
         <div>
           {data?.pop ? <div> {Math.round(data?.pop * 100)} %</div> : ''}
@@ -30,12 +34,6 @@ export const HourlyForecast = () => {
             ''
           )}
         </div>
-      </div>
-
-      <div className="container mx-auto">
-        <b>
-          <TimeComponent seconds={data?.dt} options={{ hour: 'numeric' }} />
-        </b>
       </div>
     </div>
   ))
