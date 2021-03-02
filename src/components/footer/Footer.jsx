@@ -19,16 +19,14 @@ export const Footer = () => {
   const theme = useSelector(selectTheme)
 
   return (
-    <footer className={theme === 'dark' ? classes.dark : classes.light}>
-      <div
-        className={`flex flex-col text-center sm:flex sm:flex-row justify-around p-5 text-${theme} text-sm`}
-      >
-        <p className="flex flex-no-wrap justify-center items-center my-2 sm:my-0 w-full sm:w-1/2">
-          Made with&nbsp;
+    <div class="item footer">
+      <div>
+        <p>
+          Made with{' '}
           <HeartSpan title="Love" role="img" aria-label="Love">
             <FaHeart />
-          </HeartSpan>
-          &nbsp;using&nbsp;
+          </HeartSpan>{' '}
+          using{' '}
           <ReactSpan title="React" role="img" aria-label="React">
             <FaReact />
           </ReactSpan>
@@ -45,6 +43,6 @@ export const Footer = () => {
           Ketan Desai
         </a>
       </p>
-    </footer>
+    </div>
   )
 }
