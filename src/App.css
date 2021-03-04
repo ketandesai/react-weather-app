@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-/* SET UP */
+/* SET UP 
 
 * {
   box-sizing: border-box;
@@ -36,9 +36,9 @@ body {
 
 .alignright {
   float: right;
-}
+}*/
 
-/* Weather Container */
+/* Weather Container
 
 .weather.container {
   display: grid;
@@ -73,17 +73,17 @@ body {
 .weather .footer {
   grid-area: footer;
   text-align: center;
-}
+}*/
 
-/*Current weather Container */
+/*Current weather Container
 .current.container {
   display: grid;
   gap: 4px;
   margin: 10px;
   grid-template-rows: repeat(3, auto);
-}
+} */
 
-/*Forcast Container */
+/*Forcast Container 
 .forecast.container {
   display: grid;
   gap: 4px;
@@ -91,7 +91,7 @@ body {
   grid-template-columns: auto auto;
   grid-template-areas: 'hourly daily';
 }
-
+*/
 .forecast.hourly {
   grid-area: hourly;
 }
@@ -196,7 +196,7 @@ body {
   grid-template-rows: 2;
 }
 
-/* Desktop breakpoint */
+/* Desktop breakpoint 
 @media (min-width: 720px) {
   .weather.container {
     grid-template-areas:
@@ -241,6 +241,7 @@ body {
     grid-template-rows: 1fr;
   }
 }
+*/
 
 .light {
   background: white;

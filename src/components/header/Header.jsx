@@ -4,8 +4,9 @@ import ThemeIcon from '../icon/ThemeIcon'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
+import { Wrapper } from '../styles/Wrapper'
 
-export const Header = () => {
+export default function Header() {
   const dispatch = useDispatch()
   const theme = useSelector(selectTheme)
 
@@ -15,7 +16,12 @@ export const Header = () => {
   }
 
   return (
-    <header className="flex justify-between items-center px-5 py-5">
+    <Wrapper
+      as="header"
+      style={{
+        '--grid-area': 'header',
+      }}
+    >
       <div>
         <a
           href="https://github.com/ketandesai/weather-app"
@@ -55,7 +61,7 @@ export const Header = () => {
         </a>
       </div>
 
-      <div>
+      <div class="alignright">
         <Toggle
           checked={theme === 'dark'}
           icons={{
@@ -65,6 +71,6 @@ export const Header = () => {
           onChange={onThemeChanged}
         />
       </div>
-    </header>
+    </Wrapper>
   )
 }

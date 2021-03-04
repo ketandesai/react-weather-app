@@ -3,23 +3,21 @@ import { FaHeart, FaReact } from 'react-icons/fa'
 import moment from 'moment-timezone'
 import { selectTheme } from '../../reducers/themeSlice'
 import { useSelector } from 'react-redux'
-import classes from './footer.module.css'
 import styled from 'styled-components'
-
-const HeartSpan = styled.span`
-  color: #ed2324;
-  font-size: 1rem;
-`
-
-const ReactSpan = styled(HeartSpan)`
-  color: #2acef7;
-`
+import { Wrapper } from '../styles/Wrapper'
+import TextLink from '../styles/TextLink'
 
 export const Footer = () => {
   const theme = useSelector(selectTheme)
 
   return (
-    <div class="item footer">
+    <Wrapper
+      as="footer"
+      style={{
+        '--grid-area': 'footer',
+        '--text-align': 'center',
+      }}
+    >
       <div>
         <p>
           Made with{' '}
@@ -34,15 +32,24 @@ export const Footer = () => {
       </div>
       <p className="mx-auto text-center text-sm">
         &copy; {moment().format('YYYY')}{' '}
-        <a
+        <TextLink
           className={`link z-0 hover:text-${theme}`}
           href="https://github.com/ketandesai/weather-app"
           target="_blank"
           rel="noreferrer noopener"
         >
           Ketan Desai
-        </a>
+        </TextLink>
       </p>
-    </div>
+    </Wrapper>
   )
 }
+
+const HeartSpan = styled.span`
+  color: #ed2324;
+  font-size: 1rem;
+`
+
+const ReactSpan = styled(HeartSpan)`
+  color: #2acef7;
+`
