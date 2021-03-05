@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { BREAKPOINTS } from '../styles/constants'
 
 export const GridLayout = styled.div`
   display: grid;
@@ -12,26 +13,13 @@ export const GridLayout = styled.div`
     'main'
     'aside'
     'footer';
-`
 
-/*export const Nav = styled.nav`
-  grid-area: nav;
+  @media (min-width: ${BREAKPOINTS.tablet}) {
+    grid-template-areas:
+      'header header header header'
+      'search search search search'
+      'aside main main main'
+      'footer footer footer footer';
+    grid-template-rows: auto auto 1fr auto;
+  }
 `
-
-export const Search = styled.div`
-  grid-area: search;
-`
-
-export const Aside = styled.aside`
-  grid-area: aside;
-`
-
-export const Main = styled.main`
-  grid-area: main;
-`
-
-export const Footer = styled.footer`
-  grid-area: footer;
-  text-align: center;
-`
-*/

@@ -1,13 +1,133 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { Wrapper } from '../styles/Wrapper'
+import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
+import { locationUpdated } from '../../reducers/locationSlice'
 
-const SearchContainer = styled.div`
-  grid-area: 'searchbar';
-  padding: 8px;
-  background-color: white;
-  border: 1px solid blue;
-  border-radius: 6px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+const ENTER_KEY = 13
+const UP_ARROW_KEY = 38
+const DOWN_ARROW_KEY = 40
+
+const SearchBar = () => {
+  const dispatch = useDispatch()
+  const [activeSuggestion, setActiveSuggestion] = useState(0)
+  const [filteredSuggestions, setFilteredSuggestions] = useState([])
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const [userInput, setUserInput] = useState('')
+  const [lat, setLat] = useState('')
+  const [lon, setLon] = useState('')
+  const [locationSelected, setLocationSelected] = useState('')
+  const places = useSelector(selectFeatures)
+
+  useEffect(() => {
+    if (userInput) {
+      dispatch(fetchForward(userInput))
+      if (locationSelected && lat && lon) {
+        dispatch(
+          locationUpdated({ lat: lat, lon: lon, city: locationSelected })
+        )
+      }
+    }
+  }, [dispatch, userInput, locationSelected, lat, lon])
+
+  const onChange = (e) => {
+    const suggestions = places?.map((data) => data.place_name)
+    setActiveSuggestion(0)
+    setFilteredSuggestions(suggestions)
+    setShowSuggestions(true)
+    setUserInput(e.currentTarget.value)
+    setLocationSelected(null)
+  }
+
+  const onKeyDown = (e) => {
+    if (e.keyCode === ENTER_KEY) {
+      setActiveSuggestion(0)
+      setShowSuggestions(false)
+      //setUserInput(filteredSuggestions[activeSuggestion])
+    } else if (e.keyCode === UP_ARROW_KEY) {
+      if (activeSuggestion === 0) {
+        return
+      }
+      setActiveSuggestion(activeSuggestion - 1)
+    } else if (e.keyCode === DOWN_ARROW_KEY) {
+      if (activeSuggestion - 1 === filteredSuggestions.length) {
+        return
+      }
+    }
+    setActiveSuggestion(activeSuggestion + 1)
+  }
+
+  const onClick = (e) => {
+    const placeSelected = places.find(
+      (element) => element.place_name === e.currentTarget.innerText
+    )
+    setLon(placeSelected?.center[0])
+    setLat(placeSelected?.center[1])
+    setLocationSelected(e.currentTarget.innerText)
+    setActiveSuggestion(0)
+    setFilteredSuggestions([])
+    setShowSuggestions(false)
+    setUserInput(e.currentTarget.innerText)
+  }
+
+  let suggestionsListComponent
+  if (showSuggestions && userInput) {
+    if (places?.length > 0) {
+      suggestionsListComponent = (
+        <Suggestion>
+          {places.map((suggestion, index) => {
+            let className
+
+            if (index === activeSuggestion) {
+              className = 'suggestion-active'
+            }
+            return (
+              <li className={className} key={index} onClick={onClick}>
+                {suggestion.place_name}
+              </li>
+            )
+          })}
+        </Suggestion>
+      )
+    } else {
+      suggestionsListComponent = (
+        <div className="flex justify-center no-suggestions">
+          <em>No suggestions available.</em>
+        </div>
+      )
+    }
+  }
+
+  return (
+    <Wrapper
+      as="search"
+      style={{
+        '--grid-area': 'search',
+      }}
+    >
+      <SearchBox
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        value={userInput}
+        placeholder="Search City"
+      />
+      {suggestionsListComponent}
+    </Wrapper>
+  )
+}
+
+const Suggestion = styled.ul`
+  border: 1px solid #999;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-left: 0;
+  text-align: left;
+  max-width: 600px;
+  width: 100%;
 `
 
 const SearchBox = styled.input`
@@ -25,13 +145,5 @@ const SearchBox = styled.input`
     outline: none;
   }
 `
-
-const SearchBar = () => {
-  return (
-    <SearchContainer className="searchbar">
-      <SearchBox placeholder="Enter City" />
-    </SearchContainer>
-  )
-}
 
 export default SearchBar

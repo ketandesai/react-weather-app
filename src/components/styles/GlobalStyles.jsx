@@ -43,15 +43,6 @@ export const GlobalStyles = createGlobalStyle`
       --font-size-small: 21px;
       --font-size-medium: 24px;
 
-      .weather.container {
-        grid-template-areas:
-        'header header header header'
-        'sidebar searchbar searchbar searchbar'
-        'sidebar main main main'
-        'footer footer footer footer';
-        grid-template-rows: auto auto 1fr auto;
-      }
-
       .current.container {
         grid-template-rows: auto auto;
       }

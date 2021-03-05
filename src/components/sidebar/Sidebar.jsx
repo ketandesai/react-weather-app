@@ -2,7 +2,7 @@ import React from 'react'
 import { Wrapper } from '../styles/Wrapper'
 import TextLink from '../styles/TextLink'
 
-const Sidebar = ({ childrn }) => {
+const Sidebar = () => {
   return (
     <Wrapper
       as="aside"
