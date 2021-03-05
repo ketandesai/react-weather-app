@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BREAKPOINTS } from '../styles/constants'
+import { DEVICES } from '../styles/constants'
 
 export const GridLayout = styled.div`
   display: grid;
@@ -14,7 +14,7 @@ export const GridLayout = styled.div`
     'aside'
     'footer';
 
-  @media (min-width: ${BREAKPOINTS.tablet}) {
+  @media (min-width: ${DEVICES.tablet}) {
     grid-template-areas:
       'header header header header'
       'search search search search'

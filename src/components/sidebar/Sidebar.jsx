@@ -12,6 +12,7 @@ const Sidebar = () => {
         '--color-text': 'green',
       }}
     >
+      Favorites
       <ul>
         <li>Charlotte, NC</li>
         <li>Miami, FL</li>

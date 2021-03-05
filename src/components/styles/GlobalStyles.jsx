@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components'
-import { COLORS, BREAKPOINTS } from './constants'
+import { COLORS, DEVICES } from './constants'
 
 // Create a `GlobalStyles` component.
 // I usually already have this, to include a CSS
@@ -39,7 +39,8 @@ export const GlobalStyles = createGlobalStyle`
     --font-size-small: 10px;
     --font-size-medium: 12px;
     
-    @media (min-width: ${BREAKPOINTS.tablet}) {
+    /* For tablets and larger devices */
+    @media (min-width: ${DEVICES.tablet}) {
       --font-size-small: 21px;
       --font-size-medium: 24px;
 

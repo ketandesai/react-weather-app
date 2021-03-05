@@ -5,7 +5,7 @@ export const COLORS = {
 }
 export const SIZES = [8, 16, 24, 32, 48]
 
-export const BREAKPOINTS = {
+export const DEVICES = {
   mobile: '450px',
   tablet: '720px',
   desktop: '1024px',

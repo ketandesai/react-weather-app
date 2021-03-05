@@ -104,6 +104,8 @@ const SearchBar = () => {
       as="search"
       style={{
         '--grid-area': 'search',
+        height: '50px',
+        zIndex: 2,
       }}
     >
       <SearchBox
@@ -118,16 +120,33 @@ const SearchBar = () => {
 }
 
 const Suggestion = styled.ul`
-  border: 1px solid #999;
+  border: none;
   border-top-width: 0;
   list-style: none;
-  margin-top: 0;
-  max-height: 200px;
+  margin-top: -10px;
+  max-height: 250px;
   overflow-y: auto;
   padding-left: 0;
   text-align: left;
   max-width: 600px;
   width: 100%;
+  z-index: 10;
+
+  li {
+    background-color: #e2e8f0;
+    padding: 0.5rem;
+
+    :hover {
+      background-color: #44b4f5;
+      /*color: #d8e6f7;*/
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    :not(:last-of-type) {
+      border-bottom: none;
+    }
+  }
 `
 
 const SearchBox = styled.input`
