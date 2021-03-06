@@ -48,13 +48,6 @@ export const GlobalStyles = createGlobalStyle`
         grid-template-rows: auto auto;
       }
 
-      .forecast.container {
-        grid-template-areas:
-        'hourly'
-        'daily';
-        grid-template-rows: auto auto;
-      }
-
       .wrapper {
         grid-template-columns: auto auto;
       }
@@ -66,16 +59,122 @@ export const GlobalStyles = createGlobalStyle`
       .temp {
         text-align: left;
       }
-
-      .day.container {
-        grid-template-areas: 'day1 day2 day3 day4 day5 day6 day7';
-        grid-template-rows: 1fr;
-      }
-
-      .hour.container {
-        grid-template-areas: 'hour1 hour2 hour3 hour4 hour5 hour6 hour7';
-        grid-template-rows: 1fr;
-      }
     }
+
+    .react-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      border: 0;
+      padding: 0;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .react-toggle-screenreader-only {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    .react-toggle--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      -webkit-transition: opacity 0.25s;
+      transition: opacity 0.25s;
+    }
+
+    .react-toggle-track {
+      width: 58px;
+      height: 24px;
+      padding: 0ch;
+      border-radius: 30px;
+      background-color: #4d4d4d;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+
+    .react-toggle-track-check {
+      position: absolute;
+      width: 20px;
+      height: 60px;
+      top: 0px;
+      bottom: 0px;
+      margin-top: auto;
+      margin-bottom: auto;
+      line-height: 0;
+      left: 4px;
+      opacity: 0;
+      -webkit-transition: opacity 0.25s ease;
+      -moz-transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease;
+    }
+
+    .react-toggle--checked .react-toggle-track-check {
+      opacity: 1;
+      -webkit-transition: opacity 0.25s ease;
+      -moz-transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease;
+    }
+
+    .react-toggle-track-x {
+      position: absolute;
+      width: 20px;
+      height: 60px;
+      top: 0px;
+      bottom: 0px;
+      margin-top: auto;
+      margin-bottom: auto;
+      line-height: 0;
+      right: 8px;
+      opacity: 1;
+      -webkit-transition: opacity 0.25s ease;
+      -moz-transition: opacity 0.25s ease;
+      transition: opacity 0.25s ease;
+    }
+
+    .react-toggle--checked .react-toggle-track-x {
+      opacity: 0;
+    }
+
+    .react-toggle-thumb {
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+      position: absolute;
+      top: 2px;
+      left: 4px;
+      right: 4px;
+      bottom: 1px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid hsla(0, 0%, 100%, 0.05);
+      border-radius: 50%;
+      background-color: #f8f9f5;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-transition: all 0.25s ease;
+      -moz-transition: all 0.25s ease;
+      transition: all 25s ease;
+    }
+
+    .react-toggle--checked .react-toggle-thumb {
+      left: 36px;
+      border-color: #333;
+    }
+
 }
 `

@@ -3,12 +3,12 @@ import { selectTheme } from '../../reducers/themeSlice'
 import { fetchWeather, selectUnits } from '../../reducers/weatherSlice'
 import { fetchLocation, selectLocation } from '../../reducers/locationSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { WeatherDetail } from './WeatherDetail'
-import { HourlyForecast } from './HourlyForecast'
-import { DailyForecast } from './DailyForecast'
+import WeatherDetail from './WeatherDetail'
+import HourlyForecast from './HourlyForecast'
+import DailyForecast from './DailyForecast'
 import { WeatherAlert } from './WeatherAlert'
 import { Autocompleter } from '../search/Autocompleter'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const WeatherContainer = styled.div`
   background: linear-gradient(135deg, #737dfe, #ffcac9);

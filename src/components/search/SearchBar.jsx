@@ -101,7 +101,6 @@ const SearchBar = () => {
 
   return (
     <Wrapper
-      as="search"
       style={{
         '--grid-area': 'search',
         height: '50px',

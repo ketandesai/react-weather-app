@@ -1,7 +1,7 @@
 import React from 'react'
 import { selectLocation } from '../../reducers/locationSlice'
 import { useSelector } from 'react-redux'
-const Location = () => {
+const LocationInfo = () => {
   const location = useSelector(selectLocation)
   let region = location?.region ? `, ${location.region}` : ''
   let country = location?.country ? `, ${location.country}` : ''
@@ -14,4 +14,4 @@ const Location = () => {
   )
 }
 
-export default Location
+export default LocationInfo

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const DateComponent = ({ seconds, options }) => {
+const DateComponent = ({ seconds, options }) => {
   let milliseconds = seconds * 1000
   const date = new Date(milliseconds)
   let defaultOptions = {
@@ -17,3 +17,5 @@ export const DateComponent = ({ seconds, options }) => {
 
   return <>{content}</>
 }
+
+export default DateComponent

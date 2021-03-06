@@ -100,7 +100,7 @@ body {
   grid-area: daily;
 }
 
-/* Hour Container */
+/* Hour Container 
 .hour.container {
   display: grid;
   height: 8vh;
@@ -138,9 +138,9 @@ body {
 }
 .hour.hour7 {
   grid-area: hour7;
-}
+}*/
 
-/* Day Container */
+/* Day Container 
 
 .day.container {
   display: grid;
@@ -179,7 +179,7 @@ body {
 }
 .day.day7 {
   grid-area: day7;
-}
+}*/
 
 .temp {
   display: grid;
@@ -242,13 +242,3 @@ body {
   }
 }
 */
-
-.light {
-  background: white;
-  color: #292929;
-}
-
-.dark {
-  background: #292929;
-  color: white;
-}

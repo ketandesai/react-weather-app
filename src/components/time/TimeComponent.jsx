@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TimeComponent = ({ seconds, options }) => {
+const TimeComponent = ({ seconds, options }) => {
   let milliseconds = seconds * 1000
   const date = new Date(milliseconds)
   let defaultOptions = {
@@ -14,3 +14,5 @@ export const TimeComponent = ({ seconds, options }) => {
   const content = date.toLocaleTimeString([], defaultOptions)
   return <>{content}</>
 }
+
+export default TimeComponent

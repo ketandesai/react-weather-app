@@ -61,7 +61,7 @@ export default function Header() {
         </a>
       </div>
 
-      <div class="alignright">
+      <div className="alignright">
         <Toggle
           checked={theme === 'dark'}
           icons={{

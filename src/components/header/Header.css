@@ -25,7 +25,7 @@
   }
 }
 
-/* Dark mode theme toggle */
+/* Toggle 
 .react-toggle {
   touch-action: pan-x;
   display: inline-block;
@@ -139,4 +139,4 @@
 .react-toggle--checked .react-toggle-thumb {
   left: 36px;
   border-color: #333;
-}
+}*/
