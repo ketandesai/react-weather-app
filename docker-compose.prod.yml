@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  reactweatherapp:
+    image: reactweatherapp
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes: 
+      - ./:/app
+      - '/app/node_modules'
+    environment:
+      REACT_APP_OPEN_WEATHER_API_KEY: aa950f66ca352d2c369308b20d2cbc7b
+      REACT_APP_MAP_BOX_API_KEY: pk.eyJ1IjoiZGVzYWlrZXRhbiIsImEiOiJja2o5MXZrc3cxYWtsMnhwOWg4cHZ2eWt2In0.O7xhXHQkCkXCT9Vv6POhrQ
+   

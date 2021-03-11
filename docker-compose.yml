@@ -1,12 +1,22 @@
-version: '3.4'
+# To build
+# docker-compose build
+#To run
+# docker-compose up
+# To build and run
+# docker-compose up -d --build
+# To tear down
+# docker-compose down
+
+version: '3.7'
 
 services:
-  reactweatherapp:
-    image: reactweatherapp
+  weather-app:
+    image: weather-app
     build:
       context: .
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
     ports:
       - 3000:3000

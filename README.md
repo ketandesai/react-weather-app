@@ -42,8 +42,6 @@ git clone https://github.com/ketandesai/react-weather-app.git
 
 ```
 
-- Install the packages using the command `yarn install`
-
 ## **Environment File**
 
 - Create a `.env` file in the root directory of the project. Add the following properties in it:
@@ -56,6 +54,9 @@ git clone https://github.com/ketandesai/react-weather-app.git
 
   ```
 
+- Install the packages using the command `yarn install`
+- If you prefer using Docker, skip below to the Docker Setup
+
   _That's it! You can run the below available scripts to get up and running on localhost. If you want to dive deeper into the codebase, I recommend you to check the architecture documentation to customize this application as you wish._
 
 > _These instructions are very important to avoid the **Blank Page** issue when running the application on `http://localhost:3000`._
@@ -63,6 +64,10 @@ git clone https://github.com/ketandesai/react-weather-app.git
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Installs the app dependencies. If you prefer using Docker, skip below to the Docker Setup.
 
 ### `yarn start`
 
@@ -96,6 +101,16 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Docker Setup
+
+- Prefer using Docker to get up and running, just run the command below:
+
+  ```bash
+
+  docker-compose up
+
+  ```
 
 ## 🧐 What's inside?
 
