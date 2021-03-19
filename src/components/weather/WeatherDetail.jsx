@@ -13,7 +13,7 @@ import {
 } from '../../reducers/weatherSlice'
 import LocationInfo from '../location/LocationInfo'
 import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const WeatherDetail = () => {
   const dispatch = useDispatch()
