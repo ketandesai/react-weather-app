@@ -26,7 +26,7 @@ const WeatherDetail = () => {
       : dispatch(unitsUpdated('imperial'))
   }
 
-  const Container = styled.div`
+  const Wrapper = styled.div`
     display: grid;
     gap: 4px;
     margin: 10px;
@@ -35,7 +35,7 @@ const WeatherDetail = () => {
 
   return (
     <>
-      <Container>
+      <Wrapper>
         <div>
           <div className="alignleft">
             <LocationInfo />
@@ -94,7 +94,7 @@ const WeatherDetail = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </Wrapper>
     </>
   )
 }

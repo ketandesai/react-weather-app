@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Wrapper } from '../styles/Wrapper'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchLocation, selectLocation } from '../../reducers/locationSlice'
 import {
@@ -9,6 +8,7 @@ import {
 } from '../../reducers/weatherSlice'
 import WeatherDetail from '../weather/WeatherDetail'
 import WeatherForecast from '../weather/WeatherForecast'
+import styled from 'styled-components/macro'
 
 export default function Main() {
   const dispatch = useDispatch()
@@ -32,14 +32,22 @@ export default function Main() {
   }
 
   return (
-    <Wrapper
-      as="main"
-      style={{
-        '--grid-area': 'main',
-      }}
-    >
+    <Wrapper>
       <WeatherDetail />
       <WeatherForecast />
     </Wrapper>
   )
 }
+
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  grid-area: main;
+  text-align: var(--text-align, left);
+  padding: var(--text-align, 8px);
+  background-color: var(--color, white);
+  border: var(--border, 1px solid red);
+  border-radius: var(--border-radius, 6px);
+  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+  min-height: 100%;
+`

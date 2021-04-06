@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { DEVICES } from '../styles/constants'
 
 export const GridLayout = styled.div`
   display: grid;
-  height: 100vh;
+  height: 100%;
   gap: 4px;
   margin: 10px;
   grid-template-rows: auto auto 1fr auto auto;

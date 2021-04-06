@@ -3,21 +3,25 @@ import { FaHeart, FaReact } from 'react-icons/fa'
 import moment from 'moment-timezone'
 import { selectTheme } from '../../reducers/themeSlice'
 import { useSelector } from 'react-redux'
-import styled from 'styled-components'
-import { Wrapper } from '../styles/Wrapper'
 import TextLink from '../styles/TextLink'
+import styled from 'styled-components/macro'
+
+const Wrapper = styled.footer`
+  grid-area: var(--grid-area, footer);
+  text-align: var(--text-align, center);
+  padding: var(--text-align, 8px);
+  background-color: var(--color, white);
+  border: var(--border, 1px solid blue);
+  border-radius: var(--border-radius, 6px);
+  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+  margin-top: auto;
+`
 
 export const Footer = () => {
   const theme = useSelector(selectTheme)
 
   return (
-    <Wrapper
-      as="footer"
-      style={{
-        '--grid-area': 'footer',
-        '--text-align': 'center',
-      }}
-    >
+    <Wrapper>
       <div>
         <p>
           Made with{' '}

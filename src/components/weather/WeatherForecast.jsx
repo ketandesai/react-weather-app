@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Wrapper } from '../styles/Wrapper'
 import HourlyForecast from './HourlyForecast'
 import DailyForecast from './DailyForecast'
 import { DEVICES } from '../styles/constants'
@@ -27,8 +26,6 @@ export default function WeatherForecast() {
       <Wrapper
         style={{
           '--grid-area': 'hourly',
-          '--border': 'none',
-          '--box-shadow': 'none',
         }}
       >
         <HourlyForecast />
@@ -36,8 +33,6 @@ export default function WeatherForecast() {
       <Wrapper
         style={{
           '--grid-area': 'daily',
-          '--border': 'none',
-          '--box-shadow': 'none',
         }}
       >
         <DailyForecast />
@@ -45,3 +40,9 @@ export default function WeatherForecast() {
     </ForecastContainer>
   )
 }
+
+const Wrapper = styled.div`
+  grid-area: var(--grid-area);
+  text-align: var(--text-align, left);
+  background-color: var(--color, white);
+`

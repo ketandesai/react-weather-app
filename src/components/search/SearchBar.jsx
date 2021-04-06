@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components'
-import { Wrapper } from '../styles/Wrapper'
+import styled from 'styled-components/macro'
 import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
 import { locationUpdated } from '../../reducers/locationSlice'
 
@@ -100,13 +99,7 @@ const SearchBar = () => {
   }
 
   return (
-    <Wrapper
-      style={{
-        '--grid-area': 'search',
-        height: '50px',
-        zIndex: 2,
-      }}
-    >
+    <Wrapper>
       <SearchBox
         onChange={onChange}
         onKeyDown={onKeyDown}
@@ -117,6 +110,18 @@ const SearchBar = () => {
     </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  grid-area: search;
+  text-align: var(--text-align, left);
+  padding: var(--text-align, 8px);
+  background-color: var(--color, white);
+  border: var(--border, 1px solid blue);
+  border-radius: var(--border-radius, 6px);
+  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+  height: '50px';
+  z-index: 2;
+`
 
 const Suggestion = styled.ul`
   border: none;

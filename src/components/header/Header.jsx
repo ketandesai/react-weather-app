@@ -4,7 +4,7 @@ import ThemeIcon from '../icon/ThemeIcon'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
-import { Wrapper } from '../styles/Wrapper'
+import styled from 'styled-components/macro'
 
 export default function Header() {
   const dispatch = useDispatch()
@@ -16,12 +16,7 @@ export default function Header() {
   }
 
   return (
-    <Wrapper
-      as="header"
-      style={{
-        '--grid-area': 'header',
-      }}
-    >
+    <Wrapper>
       <div>
         <a
           href="https://github.com/ketandesai/weather-app"
@@ -74,3 +69,13 @@ export default function Header() {
     </Wrapper>
   )
 }
+
+const Wrapper = styled.header`
+  grid-area: header;
+  text-align: var(--text-align, left);
+  padding: var(--text-align, 8px);
+  background-color: var(--color, white);
+  border: var(--border, 1px solid blue);
+  border-radius: var(--border-radius, 6px);
+  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+`
