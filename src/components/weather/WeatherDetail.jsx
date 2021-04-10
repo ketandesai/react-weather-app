@@ -27,7 +27,8 @@ const WeatherDetail = () => {
   }
 
   const Wrapper = styled.div`
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 4px;
     margin: 10px;
     grid-template-rows: repeat(3, auto);

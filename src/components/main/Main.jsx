@@ -32,22 +32,20 @@ export default function Main() {
   }
 
   return (
-    <Wrapper>
+    <MainWrapper>
       <WeatherDetail />
       <WeatherForecast />
-    </Wrapper>
+    </MainWrapper>
   )
 }
 
-const Wrapper = styled.main`
+const MainWrapper = styled.main`
+  flex: 3;
   display: flex;
   flex-direction: column;
-  grid-area: main;
-  text-align: var(--text-align, left);
-  padding: var(--text-align, 8px);
-  background-color: var(--color, white);
-  border: var(--border, 1px solid red);
-  border-radius: var(--border-radius, 6px);
-  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
-  min-height: 100%;
+  border: 3px solid;
+  padding: 16px;
+  border-color: hsl(220deg 100% 50%);
+  background-color: hsl(220deg 100% 50% / 0.2);
+  min-height: 80vh;
 `

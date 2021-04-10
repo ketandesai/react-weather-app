@@ -99,7 +99,7 @@ const SearchBar = () => {
   }
 
   return (
-    <Wrapper>
+    <Nav>
       <SearchBox
         onChange={onChange}
         onKeyDown={onKeyDown}
@@ -107,9 +107,19 @@ const SearchBar = () => {
         placeholder="Search City"
       />
       {suggestionsListComponent}
-    </Wrapper>
+    </Nav>
   )
 }
+
+const Nav = styled.nav`
+  flex: 1;
+  border: 3px solid;
+  padding: 16px;
+  border-color: hsl(170deg 100% 35%);
+  background-color: hsl(170deg 100% 35% / 0.2);
+  height: '50px';
+  z-index: 2;
+`
 
 const Wrapper = styled.div`
   grid-area: search;
@@ -127,7 +137,7 @@ const Suggestion = styled.ul`
   border: none;
   border-top-width: 0;
   list-style: none;
-  margin-top: -10px;
+  margin-top: 0px;
   max-height: 250px;
   overflow-y: auto;
   padding-left: 0;
