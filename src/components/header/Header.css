@@ -1,31 +1,4 @@
-/*Git hub corner */
-.github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
-}
-@keyframes octocat-wave {
-  0%,
-  100% {
-    transform: rotate(0);
-  }
-  20%,
-  60% {
-    transform: rotate(-25deg);
-  }
-  40%,
-  80% {
-    transform: rotate(10deg);
-  }
-}
-@media (max-width: 500px) {
-  .github-corner:hover .octo-arm {
-    animation: none;
-  }
-  .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
-  }
-}
-
-/* Toggle 
+/* Toggle */
 .react-toggle {
   touch-action: pan-x;
   display: inline-block;
@@ -77,7 +50,7 @@
   position: absolute;
   width: 20px;
   height: 60px;
-  top: 0px;
+  top: 34px;
   bottom: 0px;
   margin-top: auto;
   margin-bottom: auto;
@@ -100,7 +73,7 @@
   position: absolute;
   width: 20px;
   height: 60px;
-  top: 0px;
+  top: 34px;
   bottom: 0px;
   margin-top: auto;
   margin-bottom: auto;
@@ -139,4 +112,4 @@
 .react-toggle--checked .react-toggle-thumb {
   left: 36px;
   border-color: #333;
-}*/
+}

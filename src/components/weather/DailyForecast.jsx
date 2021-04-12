@@ -1,6 +1,6 @@
 import React from 'react'
 import DateComponent from '../time/DateComponent'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Temperature } from './Temperature'
 import { selectDailyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'

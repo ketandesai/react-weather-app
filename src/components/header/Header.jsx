@@ -5,6 +5,7 @@ import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
 import styled from 'styled-components/macro'
+import { DEVICES, WEIGHTS } from '../styles/constants'
 
 export default function Header() {
   const dispatch = useDispatch()
@@ -18,9 +19,8 @@ export default function Header() {
   return (
     <Wrapper>
       <div>
-        <a
+        <GitHubLink
           href="https://github.com/ketandesai/weather-app"
-          className="github-corner"
           aria-label="View source on GitHub"
           target="_blank"
           rel="noopener noreferrer"
@@ -53,10 +53,10 @@ export default function Header() {
               className="octo-body"
             ></path>
           </svg>
-        </a>
+        </GitHubLink>
       </div>
-
-      <div className="alignright">
+      <TitleWrapper>React Weather</TitleWrapper>
+      <div>
         <Toggle
           checked={theme === 'dark'}
           icons={{
@@ -71,11 +71,50 @@ export default function Header() {
 }
 
 const Wrapper = styled.header`
-  grid-area: header;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
   text-align: var(--text-align, left);
   padding: var(--text-align, 8px);
   background-color: var(--color, white);
   border: var(--border, 1px solid blue);
   border-radius: var(--border-radius, 6px);
   box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+
+  /* For tablets and larger devices */
+  @media (min-width: ${DEVICES.tablet}) {
+    justify-content: space-between;
+  }
+`
+
+const GitHubLink = styled.a`
+  :hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+
+  @keyframes octocat-wave {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    20%,
+    60% {
+      transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+      transform: rotate(10deg);
+    }
+  }
+  @media (max-width: ${DEVICES.mobile}) {
+    animation: octocat-wave 560ms ease-in-out;
+
+    :hover .octo-arm {
+      animation: none;
+    }
+  }
+`
+const TitleWrapper = styled.h1`
+  font-size: 1.5rem;
+  font-weight: ${WEIGHTS.bold};
 `

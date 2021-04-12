@@ -14,6 +14,7 @@ import {
 import LocationInfo from '../location/LocationInfo'
 import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
 import styled from 'styled-components/macro'
+import { WEIGHTS, DEVICES } from '../styles/constants'
 
 const WeatherDetail = () => {
   const dispatch = useDispatch()
@@ -26,22 +27,18 @@ const WeatherDetail = () => {
       : dispatch(unitsUpdated('imperial'))
   }
 
-  const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin: 10px;
-    grid-template-rows: repeat(3, auto);
-  `
-
   return (
     <>
       <Wrapper>
-        <div>
-          <div className="alignleft">
+        <LocationWrapper>
+          <div>
             <LocationInfo />
           </div>
-          <div className="alignright">
+          <div>
+            <DateComponent seconds={weather?.dt} /> |{' '}
+            <TimeComponent seconds={weather?.dt} />
+          </div>
+          <div>
             <Toggle
               checked={units === 'metric'}
               icons={{
@@ -51,53 +48,101 @@ const WeatherDetail = () => {
               onChange={onUnitsChanged}
             />
           </div>
-        </div>
+        </LocationWrapper>
 
-        <div>
-          <DateComponent seconds={weather?.dt} /> |{' '}
-          <TimeComponent seconds={weather?.dt} />
-        </div>
-
-        <div className="wrapper">
-          <div className="temp">
+        <DetailWrapper>
+          <Row>
             <div>
               {weather ? (
                 <img
                   src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
-                  alt=""
+                  alt={weather?.weather[0].description}
                 />
               ) : (
                 ''
               )}
+              <WeatherDescription>
+                {weather?.weather[0].description}
+              </WeatherDescription>
             </div>
             <div>
-              <div>
-                <h1>
+              <TempWrapper>
+                <TemperatureTitle>
                   <Temperature degrees={weather?.temp} />{' '}
+                </TemperatureTitle>
+                <div>
                   {units === 'imperial' ? (
                     <RiFahrenheitFill />
                   ) : (
                     <RiCelsiusFill />
                   )}
-                </h1>
-              </div>
-              <div>{weather?.weather[0].description}</div>
+                </div>
+              </TempWrapper>
+              <FeelsLikeWrapper>
+                <i>feels like </i>
+                <Temperature degrees={weather?.feels_like} showUnits={true} />
+              </FeelsLikeWrapper>
             </div>
-          </div>
+          </Row>
 
-          <div className="precipitation">
-            <div>
-              Feels like:{' '}
-              <Temperature degrees={weather?.feels_like} showUnits={true} />
-            </div>
-            <div>
-              <MinutelyForecast />
-            </div>
-          </div>
-        </div>
+          <MinuteWrapper>
+            <MinutelyForecast />
+          </MinuteWrapper>
+        </DetailWrapper>
       </Wrapper>
     </>
   )
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px;
+  grid-template-rows: repeat(3, auto);
+`
+
+const LocationWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`
+
+const DetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${DEVICES.tablet}) {
+    flex-direction: row;
+  }
+`
+
+const TempWrapper = styled.div`
+  display: flex;
+`
+
+const TemperatureTitle = styled.h1`
+  font-size: 2.5rem;
+  font-weight: ${WEIGHTS.bold};
+`
+
+const Row = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  gap: 8px;
+`
+
+const WeatherDescription = styled.div`
+  margin-top: -32px;
+`
+
+const FeelsLikeWrapper = styled.div`
+  margin-top: 12px;
+`
+
+const MinuteWrapper = styled.div`
+  align-self: center;
+`
 
 export default WeatherDetail

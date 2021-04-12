@@ -9,8 +9,8 @@ export const Temperature = ({ degrees, showUnits, showSymbol }) => {
   const unit = units === 'imperial' ? <RiFahrenheitFill /> : <RiCelsiusFill />
 
   return (
-    <div>
+    <>
       {Math.round(degrees)} {showSymbol ? symbol : ''} {showUnits ? unit : ''}
-    </div>
+    </>
   )
 }

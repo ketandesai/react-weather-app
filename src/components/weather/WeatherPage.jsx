@@ -8,7 +8,7 @@ import HourlyForecast from './HourlyForecast'
 import DailyForecast from './DailyForecast'
 import { WeatherAlert } from './WeatherAlert'
 import { Autocompleter } from '../search/Autocompleter'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const WeatherContainer = styled.div`
   background: linear-gradient(135deg, #737dfe, #ffcac9);
