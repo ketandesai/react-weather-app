@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux'
 import { Footer } from './components/footer/Footer'
 import Sidebar from './components/sidebar/Sidebar'
 import Header from './components/header/Header'
-import SearchBar from './components/search/SearchBar'
+//import SearchBar from './components/search/SearchBar'
 import Main from './components/main/Main'
 import styled from 'styled-components/macro'
+import Autocompleter from './components/search/Autocompleter'
 
 function App() {
   const theme = useSelector(selectTheme)
@@ -18,7 +19,7 @@ function App() {
       <Wrapper>
         <Header />
         <Section>
-          <SearchBar />
+          <Autocompleter />
           <Main />
           <Sidebar />
         </Section>

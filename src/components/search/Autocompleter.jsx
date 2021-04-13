@@ -1,126 +1,95 @@
 import React, { useState, useEffect } from 'react'
+import TextField from '@material-ui/core/TextField'
+import Autocomplete from '@material-ui/lab/Autocomplete'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import { useDispatch, useSelector } from 'react-redux'
-import './Autocompleter.css'
 import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
 import { locationUpdated } from '../../reducers/locationSlice'
-import styled from 'styled-components/macro'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import SearchIcon from '@material-ui/icons/Search'
 
-const ENTER_KEY = 13
-const UP_ARROW_KEY = 38
-const DOWN_ARROW_KEY = 40
-
-const SearchContainer = styled.div`
-  max-width: 800px;
-  width: 90%;
-  margin: 50px auto;
-`
-
-export const Autocompleter = () => {
+export default function Autocompleter() {
   const dispatch = useDispatch()
-  const [activeSuggestion, setActiveSuggestion] = useState(0)
-  const [filteredSuggestions, setFilteredSuggestions] = useState([])
-  const [showSuggestions, setShowSuggestions] = useState(false)
-  const [userInput, setUserInput] = useState('')
-  const [lat, setLat] = useState('')
-  const [lon, setLon] = useState('')
-  const [locationSelected, setLocationSelected] = useState('')
   const places = useSelector(selectFeatures)
+  const [open, setOpen] = useState(false)
+  const [options, setOptions] = useState([])
+  const [userInput, setUserInput] = useState('')
+  const [locationSelected, setLocationSelected] = useState('')
+  const loading = open && options?.length === 0
 
   useEffect(() => {
-    if (userInput) {
-      dispatch(fetchForward(userInput))
-      if (locationSelected && lat && lon) {
-        dispatch(
-          locationUpdated({ lat: lat, lon: lon, city: locationSelected })
-        )
-      }
-    }
-  }, [dispatch, userInput, locationSelected, lat, lon])
+    //get new suggestions as the user types
+    dispatch(fetchForward(userInput))
+  }, [dispatch, userInput])
 
-  const onChange = (e) => {
-    const suggestions = places?.map((data) => data.place_name)
-    setActiveSuggestion(0)
-    setFilteredSuggestions(suggestions)
-    setShowSuggestions(true)
-    setUserInput(e.currentTarget.value)
-    setLocationSelected(null)
-  }
-
-  const onClick = (e) => {
-    const placeSelected = places.find(
-      (element) => element.place_name === e.currentTarget.innerText
-    )
-    setLon(placeSelected?.center[0])
-    setLat(placeSelected?.center[1])
-    setLocationSelected(e.currentTarget.innerText)
-    setActiveSuggestion(0)
-    setFilteredSuggestions([])
-    setShowSuggestions(false)
-    setUserInput(e.currentTarget.innerText)
-  }
-
-  const onKeyDown = (e) => {
-    if (e.keyCode === ENTER_KEY) {
-      setActiveSuggestion(0)
-      setShowSuggestions(false)
-      //setUserInput(filteredSuggestions[activeSuggestion])
-    } else if (e.keyCode === UP_ARROW_KEY) {
-      if (activeSuggestion === 0) {
-        return
-      }
-      setActiveSuggestion(activeSuggestion - 1)
-    } else if (e.keyCode === DOWN_ARROW_KEY) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
-        return
-      }
-    }
-    setActiveSuggestion(activeSuggestion + 1)
-  }
-
-  let suggestionsListComponent
-  if (showSuggestions && userInput) {
-    if (places?.length > 0) {
-      suggestionsListComponent = (
-        <ul className="suggestions">
-          {places.map((suggestion, index) => {
-            let className
-
-            if (index === activeSuggestion) {
-              className = 'suggestion-active'
-            }
-            return (
-              <li className={className} key={index} onClick={onClick}>
-                {suggestion.place_name}
-              </li>
-            )
-          })}
-        </ul>
+  useEffect(() => {
+    if (locationSelected) {
+      const placeSelected = places.find(
+        (element) => element.place_name === locationSelected
       )
-    } else {
-      suggestionsListComponent = (
-        <div className="flex justify-center no-suggestions">
-          <em>No suggestions available.</em>
-        </div>
-      )
+      let lon = placeSelected?.center[0]
+      let lat = placeSelected?.center[1]
+      dispatch(locationUpdated({ lat: lat, lon: lon, city: locationSelected }))
     }
-  }
+  }, [dispatch, locationSelected])
+
+  useEffect(() => {
+    //updated the suggestion list as new places are suggested
+    if (places) {
+      const suggestions = places.map((data) => data.place_name)
+      setOptions(suggestions)
+    }
+  }, [places])
+
+  useEffect(() => {
+    if (!open) {
+      setOptions([])
+    }
+  }, [open])
+
   return (
-    <SearchContainer>
-      <div className="space-y-0">
-        <input
-          style={{
-            backgroundColor: '#e2e8f0',
-            letterSpacing: '0.05em',
+    <Autocomplete
+      id="city-autocompleter"
+      style={{ width: 'auto', padding: 8 }}
+      open={open}
+      onOpen={() => {
+        setOpen(true)
+      }}
+      onClose={() => {
+        setOpen(false)
+      }}
+      onChange={(event, newValue) => {
+        setLocationSelected(newValue)
+      }}
+      onInputChange={(event, newInputValue) => {
+        setUserInput(newInputValue)
+      }}
+      getOptionSelected={(option, value) => option.name === value.name}
+      getOptionLabel={(option) => option}
+      options={options}
+      loading={loading}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Search for City"
+          variant="standard"
+          InputProps={{
+            ...params.InputProps,
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <>
+                {loading ? (
+                  <CircularProgress color="inherit" size={20} />
+                ) : null}
+              </>
+            ),
           }}
-          className={`data-hj-whitelist block appearance-none w-full border-none rounded-full shadow py-3 pl-12 pr-6 mb-0 leading-tight focus:outline-none focus:bg-gray-200 truncate`}
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-          placeholder="Search City"
         />
-        {suggestionsListComponent}
-      </div>
-    </SearchContainer>
+      )}
+    />
   )
 }
