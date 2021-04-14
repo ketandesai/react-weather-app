@@ -6,11 +6,11 @@ const LocationInfo = () => {
   let region = location?.region ? `, ${location.region}` : ''
   let country = location?.country ? `, ${location.country}` : ''
   return (
-    <b>
+    <>
       {location?.city}
       {region}
       {country}
-    </b>
+    </>
   )
 }
 

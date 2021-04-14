@@ -9,6 +9,7 @@ import {
 import WeatherDetail from '../weather/WeatherDetail'
 import WeatherForecast from '../weather/WeatherForecast'
 import styled from 'styled-components/macro'
+import { COLORS } from '../styles/constants'
 
 export default function Main() {
   const dispatch = useDispatch()
@@ -43,9 +44,6 @@ const MainWrapper = styled.main`
   flex: 3;
   display: flex;
   flex-direction: column;
-  border: 3px solid;
   padding: 16px;
-  border-color: hsl(220deg 100% 50%);
-  background-color: hsl(220deg 100% 50% / 0.2);
   min-height: 80vh;
 `

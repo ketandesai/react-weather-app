@@ -5,51 +5,49 @@ import { Temperature } from './Temperature'
 import { selectDailyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
 import { Accumulation } from './Accumulation'
-import { DEVICES } from '../styles/constants'
-
-const Day = styled.div`
-  grid-area: hour1;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-
-  /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
-    flex-direction: column;
-  }
-`
-const Item = styled.div`
-  width: 6ch;
-  align-items: center;
-`
+import OpacityIcon from '@material-ui/icons/Opacity'
+import Spacer from '../spacer/Spacer'
+import { DEVICES, WEIGHTS } from '../styles/constants'
+import Image from '../image/Image'
 
 const DailyForecast = () => {
   const weather = useSelector(selectDailyWeather)
   let options = { weekday: 'short' }
-  let content = weather?.map((data, index) => (
+  let content = weather?.map((data) => (
     <DailyWrapper key={data.dt}>
-      <b>
-        <DateComponent seconds={data?.dt} options={options} />
-      </b>
-      <img
-        src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
-        alt=""
-      />
+      <TitleWrapper>
+        <BoldFont>
+          <DateComponent seconds={data?.dt} options={options} />
+        </BoldFont>
+        <Spacer size={12} />
+        <Image
+          src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
+          alt=""
+        />
+      </TitleWrapper>
 
       <Row>
-        <Temperature degrees={data?.temp.max} showSymbol={true} />
-        <Temperature degrees={data?.temp.min} showSymbol={true} />
-      </Row>
-      <Row>
-        {data?.pop > 0 ? <div>{Math.round(data?.pop * 100)} %</div> : '88 %'}
+        {data?.pop > 0 ? (
+          <div>
+            <OpacityIcon color="primary" fontSize="small" />
+            {Math.round(data?.pop * 100)} %
+          </div>
+        ) : (
+          <Spacer size={12} />
+        )}
         <div>
           <Accumulation rain={data?.rain} snow={data?.snow} />
         </div>
       </Row>
+      <TempRow>
+        <BoldFont>
+          <Temperature degrees={data?.temp.max} showSymbol={true} />
+        </BoldFont>
+        <Spacer size={2} />
+        <BoldFont>
+          <Temperature degrees={data?.temp.min} showSymbol={true} />
+        </BoldFont>
+      </TempRow>
     </DailyWrapper>
   ))
   //removes weather for today, since it is redundant
@@ -60,17 +58,17 @@ const DailyForecast = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 4px;
   @media (min-width: ${DEVICES.tablet}) {
     flex-direction: row;
     justify-content: space-between;
   }
 `
 
-const DailyWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  font-size: 1rem;
 
   /* For tablets and larger devices */
   @media (min-width: ${DEVICES.tablet}) {
@@ -79,13 +77,45 @@ const DailyWrapper = styled.div`
   }
 `
 
-const Row = styled.div`
+const DailyWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: var(--border-radius, 10px);
+  //box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+  background: linear-gradient(135deg, hsl(172, 91%, 70%), hsl(196, 94%, 67%));
+
   /* For tablets and larger devices */
+  @media (min-width: ${DEVICES.tablet}) {
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 125px;
+  }
+`
+
+const Row = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
+  /* For tablets and larger devices */
+
   @media (min-width: ${DEVICES.tablet}) {
+    gap: 4px;
+    font-size: 0.9rem;
   }
+`
+
+const TempRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+`
+
+const BoldFont = styled.span`
+  font-weight: ${WEIGHTS.bold};
 `
 
 export default DailyForecast

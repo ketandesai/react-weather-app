@@ -5,17 +5,7 @@ import { selectTheme } from '../../reducers/themeSlice'
 import { useSelector } from 'react-redux'
 import TextLink from '../styles/TextLink'
 import styled from 'styled-components/macro'
-
-const Wrapper = styled.footer`
-  grid-area: var(--grid-area, footer);
-  text-align: var(--text-align, center);
-  padding: var(--text-align, 8px);
-  background-color: var(--color, white);
-  border: var(--border, 1px solid blue);
-  border-radius: var(--border-radius, 6px);
-  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
-  margin-top: auto;
-`
+import { COLORS } from '../styles/constants'
 
 export const Footer = () => {
   const theme = useSelector(selectTheme)
@@ -48,6 +38,17 @@ export const Footer = () => {
     </Wrapper>
   )
 }
+
+const Wrapper = styled.footer`
+  grid-area: var(--grid-area, footer);
+  text-align: var(--text-align, center);
+  padding: var(--text-align, 8px);
+  background-color: var(--color, ${COLORS.gray[300]});
+  //border: var(--border, 1px solid blue);
+  border-radius: var(--border-radius, 6px);
+  //box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+  margin-top: auto;
+`
 
 const HeartSpan = styled.span`
   color: #ed2324;

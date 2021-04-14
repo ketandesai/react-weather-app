@@ -1,6 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components'
-import { COLORS, DEVICES } from './constants'
-
+import { COLORS } from './constants'
 // Create a `GlobalStyles` component.
 // I usually already have this, to include a CSS
 // reset, set border-box, and other global concerns.
@@ -74,6 +73,8 @@ html, body, #root {
   height: 100%;
   margin: 0 auto;
   max-width: 1024px;
+  background: ${COLORS.darkblue[500]};
+  background: ${COLORS.gray[400]};
 }
 
 `

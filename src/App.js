@@ -9,6 +9,7 @@ import Header from './components/header/Header'
 import Main from './components/main/Main'
 import styled from 'styled-components/macro'
 import Autocompleter from './components/search/Autocompleter'
+import { COLORS } from './components/styles/constants'
 
 function App() {
   const theme = useSelector(selectTheme)
@@ -33,6 +34,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
+  color: ${COLORS.darkblue[100]};
+  background: ${COLORS.palegreen};
+  //background: ${COLORS.darkblue[300]};
 `
 
 const Section = styled.div`

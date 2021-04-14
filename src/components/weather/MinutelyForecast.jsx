@@ -1,6 +1,7 @@
 import React from 'react'
 import { selectMinutelyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
+import OpacityIcon from '@material-ui/icons/Opacity'
 
 export const MinutelyForecast = () => {
   const weather = useSelector(selectMinutelyWeather)
@@ -14,5 +15,10 @@ export const MinutelyForecast = () => {
     let precipitation = Number.parseFloat(sum / 25.4).toFixed(1)
     content = `${precipitation} in within the hour`
   }
-  return <>{content}</>
+  return (
+    <>
+      <OpacityIcon color="primary" fontSize="small" />
+      {content}
+    </>
+  )
 }
