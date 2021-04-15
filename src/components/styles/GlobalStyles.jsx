@@ -1,8 +1,8 @@
-import { createGlobalStyle, css } from 'styled-components'
-import { COLORS } from './constants'
+import { createGlobalStyle } from 'styled-components'
 // Create a `GlobalStyles` component.
 // I usually already have this, to include a CSS
 // reset, set border-box, and other global concerns.
+
 export const GlobalStyles = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -73,8 +73,7 @@ html, body, #root {
   height: 100%;
   margin: 0 auto;
   max-width: 1024px;
-  background: ${COLORS.darkblue[500]};
-  background: ${COLORS.gray[400]};
+  background: ${(props) => props.theme.background};
 }
 
 `

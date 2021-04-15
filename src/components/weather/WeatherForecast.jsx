@@ -4,11 +4,11 @@ import HourlyForecast from './HourlyForecast'
 import DailyForecast from './DailyForecast'
 import { DEVICES } from '../styles/constants'
 
-export default function WeatherForecast() {
+export default function WeatherForecast({ theme }) {
   return (
     <ForecastWrapper>
-      <HourlyForecast />
-      <DailyForecast />
+      <HourlyForecast theme={theme} />
+      <DailyForecast theme={theme} />
     </ForecastWrapper>
   )
 }

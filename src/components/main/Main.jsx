@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchLocation, selectLocation } from '../../reducers/locationSlice'
-import {
-  fetchWeather,
-  unitsUpdated,
-  selectUnits,
-} from '../../reducers/weatherSlice'
+import { fetchWeather, selectUnits } from '../../reducers/weatherSlice'
 import WeatherDetail from '../weather/WeatherDetail'
 import WeatherForecast from '../weather/WeatherForecast'
 import styled from 'styled-components/macro'
-import { COLORS } from '../styles/constants'
 
-export default function Main() {
+export default function Main({ theme }) {
   const dispatch = useDispatch()
   const units = useSelector(selectUnits)
   const location = useSelector(selectLocation)
@@ -26,16 +21,10 @@ export default function Main() {
     }
   }, [location, units, dispatch])
 
-  const onUnitsChanged = () => {
-    units === 'imperial'
-      ? dispatch(unitsUpdated('metric'))
-      : dispatch(unitsUpdated('imperial'))
-  }
-
   return (
     <MainWrapper>
-      <WeatherDetail />
-      <WeatherForecast />
+      <WeatherDetail theme={theme} />
+      <WeatherForecast theme={theme} />
     </MainWrapper>
   )
 }
@@ -45,5 +34,5 @@ const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  min-height: 80vh;
+  min-height: 70vh;
 `

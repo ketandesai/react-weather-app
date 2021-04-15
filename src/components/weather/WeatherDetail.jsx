@@ -1,19 +1,22 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { COLORS } from '../styles/constants'
+import { GRADIENTS } from '../styles/constants'
 import TemperatureToggle from '../toggle/TemperatureToggle'
 import FavoriteButton from '../favorites/FavoriteButton'
 import CurrentWeather from './CurrentWeather'
 import CurrentInfo from './CurrentInfo'
 import CurrentConditions from './CurrentConditions'
 
-const WeatherDetail = () => {
+const WeatherDetail = ({ theme }) => {
+  const style = {
+    '--background': GRADIENTS[theme],
+  }
   return (
     <>
-      <Wrapper>
+      <Wrapper style={style}>
         <ToggleWrapper>
           <TemperatureToggle />
-          <FavoriteButton />
+          <FavoriteButton theme={theme} />
         </ToggleWrapper>
         <CurrentWeather />
         <CurrentInfo />
@@ -22,12 +25,6 @@ const WeatherDetail = () => {
     </>
   )
 }
-
-const ToggleWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,17 +36,13 @@ const Wrapper = styled.div`
   grid-template-rows: repeat(3, auto);
 
   border-radius: var(--border-radius, 10px);
-  background-color: ${COLORS.white};
-  //background: linear-gradient(135deg, #13e2da, #9055ff);
-  //background: linear-gradient(135deg, #6699ff, #000066);
-  //background: linear-gradient(135deg, #b2ffda, #000066);
-  //background: linear-gradient(135deg, #402662, #3900a6);
-  //background: linear-gradient(135deg, #ed7b84, #9055ff);
-  //background: linear-gradient(135deg, #0b63f6, #003cc5);
-  //background: linear-gradient(135deg, #2f80ed, #b2ffda);
-  //background: linear-gradient(135deg, #737dfe, #ffcac9);
-  //background: linear-gradient(135deg, #003cc5, #000066);
-  background: linear-gradient(135deg, hsl(172, 91%, 70%), hsl(196, 94%, 67%));
+  background: var(--background);
+`
+
+const ToggleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `
 
 export default WeatherDetail

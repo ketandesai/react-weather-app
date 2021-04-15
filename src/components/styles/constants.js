@@ -24,8 +24,8 @@ export const COLORS = {
     900: 'hsl(220deg, 3%, 20%)',
   },
   primary: 'hsl(340deg, 65%, 47%)',
-  primary: 'hsl(240deg, 9%, 91%, 1)',
-  primary: 'hsl(234deg, 32%, 17%, 1)',
+  primary2: 'hsl(240deg, 9%, 91%, 1)',
+  primary3: 'hsl(234deg, 32%, 17%, 1)',
   secondary: 'hsl(240deg, 60%, 63%)',
 }
 
@@ -44,5 +44,42 @@ export const GRADIENTS = {
   linear-gradient(135deg, #0b63f6, #003cc5);
   linear-gradient(135deg, #2f80ed, #b2ffda);
   linear-gradient(135deg, #737dfe, #ffcac9);
-  linear-gradient(135deg, #003cc5, #000066);*/
+  linear-gradient(135deg, #003cc5, #000066);
+  background-image: linear-gradient(
+    -225deg,
+    #ff057c 0%,
+    #8d0b93 50%,
+    #321575 100%
+  );
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-image: linear-gradient(
+    -225deg,
+    #ff3cac 0%,
+    #562b7c 52%,
+    #2b86c5 100%
+  );
+  background-image: linear-gradient(
+    -225deg,
+    #2b86c5 0%,
+    #562b7c 52%,
+    #ff3cac 100%
+  );*/
+
+  light: 'linear-gradient(135deg, hsl(172, 91%, 70%), hsl(196, 94%, 67%))',
+  dark: 'linear-gradient(-225deg,#ff057c 0%, #7c64d5 48%, #003cc5 100%)',
+}
+
+const STYLES = {
+  light: {
+    '--background': GRADIENTS.seaGreen,
+  },
+  dark: {
+    '--background': GRADIENTS.sunSet,
+  },
 }

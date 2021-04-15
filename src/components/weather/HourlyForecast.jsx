@@ -5,16 +5,19 @@ import { Temperature } from './Temperature'
 import { selectHourlyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
 import { Accumulation } from './Accumulation'
-import { DEVICES, WEIGHTS } from '../styles/constants'
+import { DEVICES, WEIGHTS, GRADIENTS } from '../styles/constants'
 import OpacityIcon from '@material-ui/icons/Opacity'
 import Spacer from '../spacer/Spacer'
 import Image from '../image/Image'
 
-const HourlyForecast = () => {
+const HourlyForecast = ({ theme }) => {
   const weather = useSelector(selectHourlyWeather)
+  const style = {
+    '--background': GRADIENTS[theme],
+  }
 
   let content = weather?.map((data) => (
-    <HourWrapper key={data?.dt}>
+    <HourWrapper key={data?.dt} style={style}>
       <TimeWrapper>
         <TimeComponent seconds={data?.dt} options={{ hour: 'numeric' }} />
       </TimeWrapper>
@@ -68,12 +71,7 @@ const HourWrapper = styled.div`
   font-size: 1rem;
   padding: 8px;
   border-radius: var(--border-radius, 10px);
-  //box-shadow: var(--box-shadow, 0px 2px 6px rgba(0, 0, 0, 0.25));
-
-  //background: linear-gradient(90deg, #b2ffda, #000066);
-  //background: radial-gradient(#000066, #b2ffda);
-  //background: hsl(198, 95%, 76%);
-  background: linear-gradient(135deg, hsl(172, 91%, 70%), hsl(196, 94%, 67%));
+  background: var(--background);
 
   /* For tablets and larger devices */
   @media (min-width: ${DEVICES.tablet}) {

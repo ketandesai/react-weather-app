@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { selectTheme } from '../../reducers/themeSlice'
+import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
+import { locationUpdated } from '../../reducers/locationSlice'
+
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchForward, selectFeatures } from '../../reducers/geocodeSlice'
-import { locationUpdated } from '../../reducers/locationSlice'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import SearchIcon from '@material-ui/icons/Search'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 export default function Autocompleter() {
+  const selectedTheme = useSelector(selectTheme)
+  //const theme = STYLES[selectedTheme]
   const dispatch = useDispatch()
   const places = useSelector(selectFeatures)
   const [open, setOpen] = useState(false)
@@ -16,6 +22,12 @@ export default function Autocompleter() {
   const [userInput, setUserInput] = useState('')
   const [locationSelected, setLocationSelected] = useState('')
   const loading = open && options?.length === 0
+
+  const theme = createMuiTheme({
+    palette: {
+      type: selectedTheme,
+    },
+  })
 
   useEffect(() => {
     //get new suggestions as the user types
@@ -50,7 +62,7 @@ export default function Autocompleter() {
   return (
     <Autocomplete
       id="city-autocompleter"
-      style={{ width: 'auto', padding: 8 }}
+      style={{ width: 'auto', padding: 16 }}
       open={open}
       onOpen={() => {
         setOpen(true)
@@ -69,26 +81,28 @@ export default function Autocompleter() {
       options={options}
       loading={loading}
       renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Search for City"
-          variant="standard"
-          InputProps={{
-            ...params.InputProps,
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <>
-                {loading ? (
-                  <CircularProgress color="inherit" size={20} />
-                ) : null}
-              </>
-            ),
-          }}
-        />
+        <ThemeProvider theme={theme}>
+          <TextField
+            {...params}
+            label="Search Place for Weather"
+            variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <>
+                  {loading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : null}
+                </>
+              ),
+            }}
+          />
+        </ThemeProvider>
       )}
     />
   )
