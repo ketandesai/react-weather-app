@@ -30,19 +30,22 @@ export default function Autocompleter() {
 
   useEffect(() => {
     //get new suggestions as the user types
-    dispatch(fetchForward(userInput))
+    if (userInput) {
+      dispatch(fetchForward(userInput))
+    }
   }, [dispatch, userInput])
 
   useEffect(() => {
     if (locationSelected) {
-      const placeSelected = places.find(
-        (element) => element.place_name === locationSelected
+      dispatch(
+        locationUpdated({
+          lon: locationSelected.center[0],
+          lat: locationSelected.center[1],
+          city: locationSelected.place_name,
+        })
       )
-      let lon = placeSelected?.center[0]
-      let lat = placeSelected?.center[1]
-      dispatch(locationUpdated({ lat: lat, lon: lon, city: locationSelected }))
     }
-  }, [dispatch, locationSelected, places])
+  }, [dispatch, locationSelected])
 
   useEffect(() => {
     //updated the suggestion list as new places are suggested
@@ -70,7 +73,10 @@ export default function Autocompleter() {
         setOpen(false)
       }}
       onChange={(event, newValue) => {
-        setLocationSelected(newValue)
+        const placeSelected = places.find(
+          (element) => element.place_name === newValue
+        )
+        setLocationSelected(placeSelected)
       }}
       onInputChange={(event, newInputValue) => {
         setUserInput(newInputValue)

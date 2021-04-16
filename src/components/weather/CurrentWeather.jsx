@@ -6,24 +6,32 @@ import { selectCurrentWeather, selectUnits } from '../../reducers/weatherSlice'
 import { Temperature } from './Temperature'
 import { WEIGHTS } from '../styles/constants'
 import Image from '../image/Image'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 function CurrentWeather() {
   const units = useSelector(selectUnits)
   const weather = useSelector(selectCurrentWeather)
   return (
     <Wrapper>
-      <Image
-        src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
-        alt={weather?.weather[0].description}
-      />
-      <TempWrapper>
-        <TemperatureTitle>
-          <Temperature degrees={weather?.temp} />{' '}
-        </TemperatureTitle>
-        <div>
-          {units === 'imperial' ? <RiFahrenheitFill /> : <RiCelsiusFill />}
-        </div>
-      </TempWrapper>
+      {weather ? (
+        <>
+          <Image
+            src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
+            alt={weather?.weather[0].description}
+          />
+
+          <TempWrapper>
+            <TemperatureTitle>
+              <Temperature degrees={weather?.temp} />{' '}
+            </TemperatureTitle>
+            <div>
+              {units === 'imperial' ? <RiFahrenheitFill /> : <RiCelsiusFill />}
+            </div>
+          </TempWrapper>
+        </>
+      ) : (
+        <CircularProgress color="inherit" size={20} />
+      )}
     </Wrapper>
   )
 }
