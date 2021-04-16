@@ -1,12 +1,14 @@
 import React from 'react'
+import styled, { ThemeProvider } from 'styled-components/macro'
 import { GlobalStyles } from './components/styles/GlobalStyles'
-import { selectTheme } from './reducers/themeSlice'
+
 import { useSelector } from 'react-redux'
-import { Footer } from './components/footer/Footer'
+import { selectTheme } from './reducers/themeSlice'
+
+import Footer from './components/footer/Footer'
 import Sidebar from './components/sidebar/Sidebar'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
-import styled, { ThemeProvider } from 'styled-components/macro'
 import Autocompleter from './components/search/Autocompleter'
 import { COLORS } from './components/styles/constants'
 

@@ -7,7 +7,7 @@ import TextLink from '../styles/TextLink'
 import styled from 'styled-components/macro'
 import { COLORS } from '../styles/constants'
 
-export const Footer = () => {
+export default function Footer() {
   const theme = useSelector(selectTheme)
 
   return (

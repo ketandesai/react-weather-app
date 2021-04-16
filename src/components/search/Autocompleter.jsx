@@ -14,7 +14,6 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 export default function Autocompleter() {
   const selectedTheme = useSelector(selectTheme)
-  //const theme = STYLES[selectedTheme]
   const dispatch = useDispatch()
   const places = useSelector(selectFeatures)
   const [open, setOpen] = useState(false)
@@ -43,7 +42,7 @@ export default function Autocompleter() {
       let lat = placeSelected?.center[1]
       dispatch(locationUpdated({ lat: lat, lon: lon, city: locationSelected }))
     }
-  }, [dispatch, locationSelected])
+  }, [dispatch, locationSelected, places])
 
   useEffect(() => {
     //updated the suggestion list as new places are suggested

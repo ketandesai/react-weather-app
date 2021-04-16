@@ -54,8 +54,7 @@ const DailyForecast = ({ theme }) => {
     </DailyWrapper>
   ))
   //removes weather for today, since it is redundant
-  let firstDay = content?.shift()
-  return <Wrapper>{content}</Wrapper>
+  return <Wrapper>{content?.slice(1, 8)}</Wrapper>
 }
 
 const Wrapper = styled.div`

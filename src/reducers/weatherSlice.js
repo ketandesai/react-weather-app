@@ -2,7 +2,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 const URL = 'https://api.openweathermap.org/data/2.5/onecall'
 const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY
-const initialState = { status: 'idle', error: null, units: 'imperial' }
+const unitsValue = window.localStorage.getItem('units')
+
+const initialState = {
+  status: 'idle',
+  error: null,
+  units: unitsValue !== null ? JSON.parse(unitsValue) : 'imperial',
+}
 
 export const fetchWeather = createAsyncThunk(
   'weather/fetchWeather',
@@ -19,6 +25,7 @@ const weatherSlice = createSlice({
   reducers: {
     unitsUpdated(state, action) {
       state.units = action.payload
+      window.localStorage.setItem('units', JSON.stringify(action.payload))
     },
   },
   extraReducers: {

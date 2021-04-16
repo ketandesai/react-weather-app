@@ -74,12 +74,3 @@ export const GRADIENTS = {
   light: 'linear-gradient(135deg, hsl(172, 91%, 70%), hsl(196, 94%, 67%))',
   dark: 'linear-gradient(-225deg,#ff057c 0%, #7c64d5 48%, #003cc5 100%)',
 }
-
-const STYLES = {
-  light: {
-    '--background': GRADIENTS.seaGreen,
-  },
-  dark: {
-    '--background': GRADIENTS.sunSet,
-  },
-}
