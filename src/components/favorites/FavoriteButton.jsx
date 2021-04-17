@@ -20,17 +20,33 @@ function FavoriteButton({ theme }) {
   const latLonKey = `${location?.lat},${location?.lon}`
   const hue = theme === 'dark' ? 50 : 800
 
+  let isFavorite = favoritesArray.find((element) => element.id === latLonKey)
   const onButtonClick = () => {
-    if (favoritesArray?.includes(latLonKey)) {
-      dispatch(favoriteDeleted(latLonKey))
+    isFavorite = favoritesArray.find((element) => element.id === latLonKey)
+    if (isFavorite) {
+      dispatch(
+        favoriteDeleted({
+          id: latLonKey,
+          city: location.city,
+          lat: location.lat,
+          lon: location.lon,
+        })
+      )
     } else {
-      dispatch(favoriteAdded(latLonKey))
+      dispatch(
+        favoriteAdded({
+          id: latLonKey,
+          city: location.city,
+          lat: location.lat,
+          lon: location.lon,
+        })
+      )
     }
   }
 
   return (
     <Button onClick={onButtonClick}>
-      {favoritesArray?.includes(latLonKey) ? (
+      {isFavorite ? (
         <FavoriteIcon style={{ color: blueGrey[hue] }} />
       ) : (
         <FavoriteBorderIcon style={{ color: blueGrey[hue] }} />

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const favoritePlaces = window.localStorage.getItem('favoritePlaces')
 
 const initialState = {
+  //{ id: '', city: '' }
   favoritePlaces: favoritePlaces !== null ? JSON.parse(favoritePlaces) : [],
 }
 
@@ -20,10 +21,9 @@ const favoriteSlice = createSlice({
     },
 
     favoriteDeleted(state, action) {
-      state.favoritePlaces.filter((fav) => fav !== action.payload)
       // Construct a new array immutably
       const newFavorites = state.favoritePlaces.filter(
-        (fav) => fav !== action.payload
+        (fav) => fav.id !== action.payload.id
       )
       //save to local storage
       window.localStorage.setItem(
