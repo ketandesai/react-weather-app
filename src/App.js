@@ -12,6 +12,8 @@ import Main from './components/main/Main'
 import Autocompleter from './components/search/Autocompleter'
 import { COLORS } from './components/styles/constants'
 
+import TemporaryDrawer from './components/weather/TemporaryDrawer'
+
 export const STYLES = {
   light: {
     '--color': COLORS.darkblue[100],
@@ -37,6 +39,7 @@ function App() {
           <Header />
           <Section>
             <Autocompleter />
+            <TemporaryDrawer />
             <Main theme={theme} />
             <Sidebar theme={theme} />
           </Section>
