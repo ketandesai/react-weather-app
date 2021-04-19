@@ -12,6 +12,7 @@ import Image from '../image/Image'
 
 const DailyForecast = ({ theme }) => {
   const weather = useSelector(selectDailyWeather)
+  const color = theme === 'light' ? 'primary' : 'inherit'
   const style = {
     '--background': GRADIENTS[theme],
   }
@@ -32,7 +33,7 @@ const DailyForecast = ({ theme }) => {
       <Row>
         {data?.pop > 0 ? (
           <div>
-            <OpacityIcon color="primary" fontSize="small" />
+            <OpacityIcon color={color} fontSize="small" />
             {Math.round(data?.pop * 100)} %
           </div>
         ) : (

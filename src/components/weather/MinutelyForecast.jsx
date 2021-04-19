@@ -1,9 +1,14 @@
 import React from 'react'
-import { selectMinutelyWeather } from '../../reducers/weatherSlice'
+
 import { useSelector } from 'react-redux'
+import { selectMinutelyWeather } from '../../reducers/weatherSlice'
+import { selectTheme } from '../../reducers/themeSlice'
+
 import OpacityIcon from '@material-ui/icons/Opacity'
 
 export const MinutelyForecast = () => {
+  const theme = useSelector(selectTheme)
+  const color = theme === 'light' ? 'primary' : 'inherit'
   const weather = useSelector(selectMinutelyWeather)
   let initialValue = 0
   let sum = weather?.reduce(function (accumulator, currentValue) {
@@ -17,7 +22,7 @@ export const MinutelyForecast = () => {
   }
   return (
     <>
-      <OpacityIcon color="primary" fontSize="small" />
+      <OpacityIcon color={color} fontSize="small" />
       {content}
     </>
   )

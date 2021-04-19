@@ -6,13 +6,10 @@ import { useSelector } from 'react-redux'
 import { selectTheme } from './reducers/themeSlice'
 
 import Footer from './components/footer/Footer'
-import Sidebar from './components/sidebar/Sidebar'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import Autocompleter from './components/search/Autocompleter'
 import { COLORS } from './components/styles/constants'
-
-import TemporaryDrawer from './components/weather/TemporaryDrawer'
 
 export const STYLES = {
   light: {
@@ -36,12 +33,11 @@ function App() {
         <GlobalStyles />
 
         <Wrapper style={style}>
-          <Header />
+          <Header theme={theme} />
           <Section>
             <Autocompleter />
-            <TemporaryDrawer />
+
             <Main theme={theme} />
-            <Sidebar theme={theme} />
           </Section>
           <Footer theme={theme} />
         </Wrapper>

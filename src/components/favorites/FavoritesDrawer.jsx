@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { selectFavorites, favoriteDeleted } from '../../reducers/favoriteSlice'
+import { locationUpdated } from '../../reducers/locationSlice'
+import { selectTheme } from '../../reducers/themeSlice'
+
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
-import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import FavoriteIcon from '@material-ui/icons/Favorite'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { selectFavorites, favoriteDeleted } from '../../reducers/favoriteSlice'
-import { locationUpdated } from '../../reducers/locationSlice'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
   list: {
@@ -25,34 +28,35 @@ const useStyles = makeStyles({
   },
 })
 
-export default function TemporaryDrawer() {
+export default function FavoritesDrawer() {
   const favoritesArray = useSelector(selectFavorites)
+  const theme = useSelector(selectTheme)
   const dispatch = useDispatch()
   const classes = useStyles()
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
+  const [open, setOpen] = useState(false)
+
+  const muiTheme = createMuiTheme({
+    palette: {
+      type: theme,
+    },
   })
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (open) => (event) => {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
     ) {
       return
     }
-
-    setState({ ...state, [anchor]: open })
+    setOpen(open)
   }
 
-  const list = (anchor) => (
+  const list = () => (
     <div
       className={clsx(classes.list)}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
     >
       <List>
         <ListItem button>
@@ -69,7 +73,6 @@ export default function TemporaryDrawer() {
             <ListItemText
               primary={fav.city}
               onClick={() => {
-                console.log('fav %j', fav)
                 dispatch(
                   locationUpdated({
                     lon: fav.lon,
@@ -95,15 +98,19 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}>left</Button>
-      <Drawer
-        anchor="left"
-        variant="persistent"
-        open={open}
-        onClose={toggleDrawer('left', false)}
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        onClick={toggleDrawer(true)}
+        edge="start"
       >
-        {list('left')}
-      </Drawer>
+        <MenuIcon />
+      </IconButton>
+      <ThemeProvider theme={muiTheme}>
+        <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
+          {list('left')}
+        </Drawer>
+      </ThemeProvider>
     </div>
   )
 }

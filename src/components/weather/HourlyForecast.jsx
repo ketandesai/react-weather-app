@@ -12,6 +12,7 @@ import Image from '../image/Image'
 
 const HourlyForecast = ({ theme }) => {
   const weather = useSelector(selectHourlyWeather)
+  const color = theme === 'light' ? 'primary' : 'inherit'
   const style = {
     '--background': GRADIENTS[theme],
   }
@@ -29,7 +30,7 @@ const HourlyForecast = ({ theme }) => {
       <Row>
         {data?.pop ? (
           <div>
-            <OpacityIcon color="primary" fontSize="small" />
+            <OpacityIcon color={color} fontSize="small" />
             {Math.round(data?.pop * 100)} %
           </div>
         ) : (
