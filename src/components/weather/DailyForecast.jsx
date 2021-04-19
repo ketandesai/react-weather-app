@@ -1,14 +1,11 @@
 import React from 'react'
-import DateComponent from '../time/DateComponent'
 import styled from 'styled-components/macro'
-import { Temperature } from './Temperature'
 import { selectDailyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
-import { Accumulation } from './Accumulation'
-import OpacityIcon from '@material-ui/icons/Opacity'
-import Spacer from '../spacer/Spacer'
-import { DEVICES, WEIGHTS, GRADIENTS } from '../styles/constants'
-import Image from '../image/Image'
+import { DEVICES, GRADIENTS } from '../styles/constants'
+import TitleWrapper from './TitleWrapper'
+import Precipitation from './Precipitation'
+import TemperatureWrapper from './TemperatureWrapper'
 
 const DailyForecast = ({ theme }) => {
   const weather = useSelector(selectDailyWeather)
@@ -16,42 +13,12 @@ const DailyForecast = ({ theme }) => {
   const style = {
     '--background': GRADIENTS[theme],
   }
-  let options = { weekday: 'short' }
+
   let content = weather?.map((data) => (
     <DailyWrapper key={data.dt} style={style}>
-      <TitleWrapper>
-        <BoldFont>
-          <DateComponent seconds={data?.dt} options={options} />
-        </BoldFont>
-        <Spacer size={12} />
-        <Image
-          src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
-          alt=""
-        />
-      </TitleWrapper>
-
-      <Row>
-        {data?.pop > 0 ? (
-          <div>
-            <OpacityIcon color={color} fontSize="small" />
-            {Math.round(data?.pop * 100)} %
-          </div>
-        ) : (
-          <Spacer size={12} />
-        )}
-        <div>
-          <Accumulation rain={data?.rain} snow={data?.snow} />
-        </div>
-      </Row>
-      <TempRow>
-        <BoldFont>
-          <Temperature degrees={data?.temp.max} showSymbol={true} />
-        </BoldFont>
-        <Spacer size={2} />
-        <BoldFont>
-          <Temperature degrees={data?.temp.min} showSymbol={true} />
-        </BoldFont>
-      </TempRow>
+      <TitleWrapper date={data.dt} icon={data?.weather[0]?.icon} daily={true} />
+      <Precipitation data={data} color={color} daily={true} />
+      <TemperatureWrapper data={data} showSymbol={true} />
     </DailyWrapper>
   ))
   //removes weather for today, since it is redundant
@@ -65,18 +32,6 @@ const Wrapper = styled.div`
   @media (min-width: ${DEVICES.tablet}) {
     flex-direction: row;
     justify-content: space-between;
-  }
-`
-
-const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-  /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
-    flex-direction: column;
-    align-items: center;
   }
 `
 
@@ -96,29 +51,6 @@ const DailyWrapper = styled.div`
     align-items: center;
     flex-basis: 125px;
   }
-`
-
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-
-  /* For tablets and larger devices */
-
-  @media (min-width: ${DEVICES.tablet}) {
-    gap: 4px;
-    font-size: 0.9rem;
-  }
-`
-
-const TempRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-`
-
-const BoldFont = styled.span`
-  font-weight: ${WEIGHTS.bold};
 `
 
 export default DailyForecast

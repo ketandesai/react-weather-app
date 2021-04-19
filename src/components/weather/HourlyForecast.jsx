@@ -1,14 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import TimeComponent from '../time/TimeComponent'
 import { Temperature } from './Temperature'
 import { selectHourlyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
-import { Accumulation } from './Accumulation'
 import { DEVICES, WEIGHTS, GRADIENTS } from '../styles/constants'
-import OpacityIcon from '@material-ui/icons/Opacity'
-import Spacer from '../spacer/Spacer'
-import Image from '../image/Image'
+import TitleWrapper from './TitleWrapper'
+import Precipitation from './Precipitation'
 
 const HourlyForecast = ({ theme }) => {
   const weather = useSelector(selectHourlyWeather)
@@ -19,32 +16,13 @@ const HourlyForecast = ({ theme }) => {
 
   let content = weather?.map((data) => (
     <HourWrapper key={data?.dt} style={style}>
-      <TimeWrapper>
-        <TimeComponent seconds={data?.dt} options={{ hour: 'numeric' }} />
-      </TimeWrapper>
-      <Image
-        src={`https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`}
-        alt={`${data?.weather[0].description}`}
+      <TitleWrapper
+        date={data.dt}
+        icon={data?.weather[0]?.icon}
+        daily={false}
       />
 
-      <Row>
-        {data?.pop ? (
-          <div>
-            <OpacityIcon color={color} fontSize="small" />
-            {Math.round(data?.pop * 100)} %
-          </div>
-        ) : (
-          <Spacer size={12} />
-        )}
-        {data?.rain ? (
-          <Accumulation
-            rain={data?.rain ? data?.rain['1h'] : 0}
-            snow={data?.snow ? data?.snow['1h'] : 0}
-          />
-        ) : (
-          <Spacer size={12} />
-        )}
-      </Row>
+      <Precipitation data={data} color={color} daily={false} />
 
       <TempWrapper>
         <Temperature degrees={data?.temp} showSymbol={true} />
@@ -81,21 +59,9 @@ const HourWrapper = styled.div`
     flex-basis: 125px;
   }
 `
-const TimeWrapper = styled.span`
-  font-weight: ${WEIGHTS.bold};
-`
 
 const TempWrapper = styled.div`
   font-weight: ${WEIGHTS.bold};
 `
 
-const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  @media (min-width: ${DEVICES.tablet}) {
-    gap: 4px;
-    font-size: 0.9rem;
-  }
-`
 export default HourlyForecast
