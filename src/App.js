@@ -36,7 +36,6 @@ function App() {
           <Header theme={theme} />
           <Section>
             <Autocompleter />
-
             <Main theme={theme} />
           </Section>
           <Footer theme={theme} />

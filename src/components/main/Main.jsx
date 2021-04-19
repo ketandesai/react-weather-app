@@ -5,6 +5,7 @@ import { fetchWeather, selectUnits } from '../../reducers/weatherSlice'
 import WeatherDetail from '../weather/WeatherDetail'
 import WeatherForecast from '../weather/WeatherForecast'
 import styled from 'styled-components/macro'
+import { WeatherAlert } from '../weather/WeatherAlert'
 
 export default function Main({ theme }) {
   const dispatch = useDispatch()
@@ -25,6 +26,7 @@ export default function Main({ theme }) {
     <MainWrapper>
       <WeatherDetail theme={theme} />
       <WeatherForecast theme={theme} />
+      <WeatherAlert theme={theme} />
     </MainWrapper>
   )
 }

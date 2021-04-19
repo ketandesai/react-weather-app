@@ -17,6 +17,7 @@ const ForecastWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  padding-bottom: 16px;
   @media (min-width: ${DEVICES.tablet}) {
     flex-direction: column;
   }
