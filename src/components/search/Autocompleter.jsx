@@ -62,31 +62,31 @@ export default function Autocompleter() {
   }, [open])
 
   return (
-    <Autocomplete
-      id="city-autocompleter"
-      style={{ width: 'auto', padding: 16 }}
-      open={open}
-      onOpen={() => {
-        setOpen(true)
-      }}
-      onClose={() => {
-        setOpen(false)
-      }}
-      onChange={(event, newValue) => {
-        const placeSelected = places.find(
-          (element) => element.place_name === newValue
-        )
-        setLocationSelected(placeSelected)
-      }}
-      onInputChange={(event, newInputValue) => {
-        setUserInput(newInputValue)
-      }}
-      getOptionSelected={(option, value) => option.name === value.name}
-      getOptionLabel={(option) => option}
-      options={options}
-      loading={loading}
-      renderInput={(params) => (
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <Autocomplete
+        id="city-autocompleter"
+        style={{ width: 'auto', padding: 16 }}
+        open={open}
+        onOpen={() => {
+          setOpen(true)
+        }}
+        onClose={() => {
+          setOpen(false)
+        }}
+        onChange={(event, newValue) => {
+          const placeSelected = places.find(
+            (element) => element.place_name === newValue
+          )
+          setLocationSelected(placeSelected)
+        }}
+        onInputChange={(event, newInputValue) => {
+          setUserInput(newInputValue)
+        }}
+        getOptionSelected={(option, value) => option.name === value.name}
+        getOptionLabel={(option) => option}
+        options={options}
+        loading={loading}
+        renderInput={(params) => (
           <TextField
             {...params}
             label="Search Place for Weather"
@@ -107,8 +107,8 @@ export default function Autocompleter() {
               ),
             }}
           />
-        </ThemeProvider>
-      )}
-    />
+        )}
+      />
+    </ThemeProvider>
   )
 }
