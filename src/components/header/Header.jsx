@@ -1,9 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
-//import GitHubLogo from '../logo/GitHubLogo'
 import { DEVICES, WEIGHTS } from '../styles/constants'
-//import ThemeToggle from '../toggle/ThemeToggle'
-//import FavoritesDrawer from '../favorites/FavoritesDrawer'
 const FavoritesDrawer = lazy(() => import('../favorites/FavoritesDrawer'))
 const ThemeToggle = lazy(() => import('../toggle/ThemeToggle'))
 const GitHubLogo = lazy(() => import('../logo/GitHubLogo'))

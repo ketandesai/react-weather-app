@@ -1,7 +1,5 @@
 import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
-//import HourlyForecast from './HourlyForecast'
-//import DailyForecast from './DailyForecast'
 import { DEVICES } from '../styles/constants'
 
 const HourlyForecast = lazy(() => import('./HourlyForecast'))

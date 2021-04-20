@@ -3,9 +3,6 @@ import styled from 'styled-components/macro'
 import { GRADIENTS } from '../styles/constants'
 import TemperatureToggle from '../toggle/TemperatureToggle'
 import FavoriteButton from '../favorites/FavoriteButton'
-//import CurrentWeather from './CurrentWeather'
-//import CurrentInfo from './CurrentInfo'
-//import CurrentConditions from './CurrentConditions'
 
 const CurrentWeather = lazy(() => import('./CurrentWeather'))
 const CurrentInfo = lazy(() => import('./CurrentInfo'))

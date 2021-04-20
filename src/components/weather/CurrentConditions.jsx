@@ -6,7 +6,7 @@ import Temperature from './Temperature'
 import { MinutelyForecast } from './MinutelyForecast'
 import { DEVICES } from '../styles/constants'
 
-function CurrentConditions() {
+export default function CurrentConditions() {
   const weather = useSelector(selectCurrentWeather)
   return (
     <Wrapper>
@@ -31,5 +31,3 @@ const Wrapper = styled.div`
     justify-content: space-around;
   }
 `
-
-export default CurrentConditions

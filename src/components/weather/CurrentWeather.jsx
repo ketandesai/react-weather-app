@@ -3,9 +3,7 @@ import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
 import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
 import { selectCurrentWeather, selectUnits } from '../../reducers/weatherSlice'
-//import Temperature from './Temperature'
 import { WEIGHTS } from '../styles/constants'
-//import Image from '../image/Image'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const Image = lazy(() => import('../image/Image'))

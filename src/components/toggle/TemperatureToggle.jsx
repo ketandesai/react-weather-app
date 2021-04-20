@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectUnits, unitsUpdated } from '../../reducers/weatherSlice'
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden'
 
-function TemperatureToggle() {
+export default function TemperatureToggle() {
   const units = useSelector(selectUnits)
   const dispatch = useDispatch()
   const farOrCelcius = units === 'imperial' ? 'Celcius' : 'Farenheight'
@@ -31,5 +31,3 @@ function TemperatureToggle() {
     </div>
   )
 }
-
-export default TemperatureToggle

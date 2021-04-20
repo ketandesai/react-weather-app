@@ -7,7 +7,6 @@ import { selectTheme } from './reducers/themeSlice'
 
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
-//import Autocompleter from './components/search/Autocompleter'
 import { COLORS } from './components/styles/constants'
 
 const Main = lazy(() => import('./components/main/Main'))

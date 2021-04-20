@@ -4,10 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchLocation, selectLocation } from '../../reducers/locationSlice'
 import { fetchWeather, selectUnits } from '../../reducers/weatherSlice'
 
-/*import WeatherDetail from '../weather/WeatherDetail'
-import WeatherForecast from '../weather/WeatherForecast'
-import WeatherAlert from '../weather/WeatherAlert'*/
-
 const WeatherDetail = lazy(() => import('./../weather/WeatherDetail'))
 const WeatherForecast = lazy(() => import('../weather/WeatherForecast'))
 const WeatherAlert = lazy(() => import('../weather/WeatherAlert'))
