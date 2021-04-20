@@ -7,10 +7,12 @@ import { selectTheme } from './reducers/themeSlice'
 
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
-import Autocompleter from './components/search/Autocompleter'
+//import Autocompleter from './components/search/Autocompleter'
 import { COLORS } from './components/styles/constants'
 
 const Main = lazy(() => import('./components/main/Main'))
+const Autocompleter = lazy(() => import('./components/search/Autocompleter'))
+
 const renderLoader = () => <p>Loading...</p>
 
 export const STYLES = {
@@ -37,8 +39,8 @@ function App() {
         <Wrapper style={style}>
           <Header theme={theme} />
           <Section>
-            <Autocompleter />
             <Suspense fallback={renderLoader()}>
+              <Autocompleter />
               <Main theme={theme} />
             </Suspense>
           </Section>
