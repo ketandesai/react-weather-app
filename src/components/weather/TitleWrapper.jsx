@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
 import DateComponent from '../time/DateComponent'
 import TimeComponent from '../time/TimeComponent'
-import Image from '../image/Image'
-import { DEVICES, WEIGHTS, GRADIENTS } from '../styles/constants'
+import { DEVICES, WEIGHTS } from '../styles/constants'
 import Spacer from '../spacer/Spacer'
+
+const Image = lazy(() => import('../image/Image'))
+const renderLoader = () => <p>Loading Image...</p>
 
 export default function TitleWrapper({ date, icon, daily }) {
   const component = daily ? (
@@ -17,7 +19,14 @@ export default function TitleWrapper({ date, icon, daily }) {
     <Wrapper>
       <BoldFont>{component}</BoldFont>
       <Spacer size={12} />
-      <Image src={`https://openweathermap.org/img/wn/${icon}.png`} alt="" />
+      <Suspense fallback={renderLoader()}>
+        <Image
+          src={`https://openweathermap.org/img/wn/${icon}.png`}
+          alt=""
+          width="50"
+          height="50"
+        />
+      </Suspense>
     </Wrapper>
   )
 }

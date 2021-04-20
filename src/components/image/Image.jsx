@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-function Image({ src, alt }) {
+export default function Image({ src, alt, width, height }) {
+  const style = {
+    '--width': width,
+    '--height': height,
+  }
   return (
     <Wrapper>
-      <ImageWrapper src={src} alt={alt} />
+      <ImageWrapper src={src} alt={alt} style={style} />
     </Wrapper>
   )
 }
@@ -14,8 +18,7 @@ const Wrapper = styled.div`
 `
 
 const ImageWrapper = styled.img`
-  width: 100%;
+  width: var(--width);
+  height: var(--height);
   border-radius: 16px 16px 4px 4px;
 `
-
-export default Image

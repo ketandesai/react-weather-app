@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
-import GitHubLogo from '../logo/GitHubLogo'
+//import GitHubLogo from '../logo/GitHubLogo'
 import { DEVICES, WEIGHTS } from '../styles/constants'
-import ThemeToggle from '../toggle/ThemeToggle'
-import FavoritesDrawer from '../favorites/FavoritesDrawer'
+//import ThemeToggle from '../toggle/ThemeToggle'
+//import FavoritesDrawer from '../favorites/FavoritesDrawer'
+const FavoritesDrawer = lazy(() => import('../favorites/FavoritesDrawer'))
+const ThemeToggle = lazy(() => import('../toggle/ThemeToggle'))
+const GitHubLogo = lazy(() => import('../logo/GitHubLogo'))
+
+const renderLoader = () => <p>Loading Drawer...</p>
 
 export default function Header() {
   return (
     <Wrapper>
-      <GitHubLogo />
+      <Suspense fallback={renderLoader()}>
+        <GitHubLogo />
+      </Suspense>
       <NavWrapper>
-        <FavoritesDrawer />
+        <Suspense fallback={renderLoader()}>
+          <FavoritesDrawer />
+        </Suspense>
         <TitleWrapper>React Weather</TitleWrapper>
-        <ThemeToggle />
+        <Suspense fallback={renderLoader()}>
+          <ThemeToggle />
+        </Suspense>
       </NavWrapper>
     </Wrapper>
   )

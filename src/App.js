@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled, { ThemeProvider } from 'styled-components/macro'
 import { GlobalStyles } from './components/styles/GlobalStyles'
 
@@ -7,9 +7,12 @@ import { selectTheme } from './reducers/themeSlice'
 
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
-import Main from './components/main/Main'
+//import Main from './components/main/Main'
 import Autocompleter from './components/search/Autocompleter'
 import { COLORS } from './components/styles/constants'
+
+const Main = lazy(() => import('./components/main/Main'))
+const renderLoader = () => <p>Loading 1...</p>
 
 export const STYLES = {
   light: {
@@ -36,7 +39,9 @@ function App() {
           <Header theme={theme} />
           <Section>
             <Autocompleter />
-            <Main theme={theme} />
+            <Suspense fallback={renderLoader()}>
+              <Main theme={theme} />
+            </Suspense>
           </Section>
           <Footer theme={theme} />
         </Wrapper>

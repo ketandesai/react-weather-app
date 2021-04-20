@@ -45,7 +45,7 @@ function FavoriteButton({ theme }) {
   }
 
   return (
-    <Button onClick={onButtonClick}>
+    <Button onClick={onButtonClick} aria-label="Add Favorite">
       {isFavorite ? (
         <FavoriteIcon style={{ color: blueGrey[hue] }} />
       ) : (

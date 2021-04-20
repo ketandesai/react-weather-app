@@ -4,6 +4,7 @@ import ThemeIcon from '../icon/ThemeIcon'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
 import './Toggle.css'
+import VisuallyHidden from '../VisuallyHidden/VisuallyHidden'
 
 function ThemeToggle() {
   const dispatch = useDispatch()
@@ -13,6 +14,7 @@ function ThemeToggle() {
     let currentTheme = theme === 'light' ? 'dark' : 'light'
     dispatch(themeUpdated(currentTheme))
   }
+
   return (
     <div>
       <Toggle
@@ -22,7 +24,11 @@ function ThemeToggle() {
           unchecked: <ThemeIcon iconType={'dark'} />,
         }}
         onChange={onThemeChanged}
+        aria-label={`Change Theme to ${theme === 'light' ? 'dark' : 'light'}`}
       />
+      <VisuallyHidden>
+        Change Theme to {theme === 'light' ? 'dark' : 'light'}
+      </VisuallyHidden>
     </div>
   )
 }

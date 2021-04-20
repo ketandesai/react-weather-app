@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import Spacer from '../spacer/Spacer'
-import { Temperature } from './Temperature'
+import Temperature from './Temperature'
 import { WEIGHTS, DEVICES } from '../styles/constants'
 
 function TemperatureWrapper({ data, showSymbol }) {

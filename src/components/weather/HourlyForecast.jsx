@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Temperature } from './Temperature'
+import Temperature from './Temperature'
 import { selectHourlyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
 import { DEVICES, WEIGHTS, GRADIENTS } from '../styles/constants'

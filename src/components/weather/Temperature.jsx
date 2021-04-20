@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectUnits } from '../../reducers/weatherSlice'
 import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
 
-export const Temperature = ({ degrees, showUnits, showSymbol }) => {
+export default function Temperature({ degrees, showUnits, showSymbol }) {
   const symbol = '\u00B0'
   const units = useSelector(selectUnits)
   const unit = units === 'imperial' ? <RiFahrenheitFill /> : <RiCelsiusFill />

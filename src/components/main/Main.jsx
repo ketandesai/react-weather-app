@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { lazy, Suspense, useEffect } from 'react'
+import styled from 'styled-components/macro'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchLocation, selectLocation } from '../../reducers/locationSlice'
 import { fetchWeather, selectUnits } from '../../reducers/weatherSlice'
-import WeatherDetail from '../weather/WeatherDetail'
+
+/*import WeatherDetail from '../weather/WeatherDetail'
 import WeatherForecast from '../weather/WeatherForecast'
-import styled from 'styled-components/macro'
-import { WeatherAlert } from '../weather/WeatherAlert'
+import WeatherAlert from '../weather/WeatherAlert'*/
+
+const WeatherDetail = lazy(() => import('./../weather/WeatherDetail'))
+const WeatherForecast = lazy(() => import('../weather/WeatherForecast'))
+const WeatherAlert = lazy(() => import('../weather/WeatherAlert'))
+const renderLoader = () => <p>Loading 2...</p>
 
 export default function Main({ theme }) {
   const dispatch = useDispatch()
@@ -24,9 +30,11 @@ export default function Main({ theme }) {
 
   return (
     <MainWrapper>
-      <WeatherDetail theme={theme} />
-      <WeatherForecast theme={theme} />
-      <WeatherAlert theme={theme} />
+      <Suspense fallback={renderLoader()}>
+        <WeatherDetail theme={theme} />
+        <WeatherForecast theme={theme} />
+        <WeatherAlert theme={theme} />
+      </Suspense>
     </MainWrapper>
   )
 }

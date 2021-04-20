@@ -13,7 +13,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 import { WEIGHTS } from '../styles/constants'
 
-export const WeatherAlert = ({ theme }) => {
+export default function WeatherAlert({ theme }) {
   const weather = useSelector(selectWeatherAlerts)
 
   const muiTheme = createMuiTheme({

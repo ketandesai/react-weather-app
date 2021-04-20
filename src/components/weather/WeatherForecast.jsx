@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
-import HourlyForecast from './HourlyForecast'
-import DailyForecast from './DailyForecast'
+//import HourlyForecast from './HourlyForecast'
+//import DailyForecast from './DailyForecast'
 import { DEVICES } from '../styles/constants'
+
+const HourlyForecast = lazy(() => import('./HourlyForecast'))
+const DailyForecast = lazy(() => import('./DailyForecast'))
+const renderLoader = () => <p>Loading Hourly, Daily...</p>
 
 export default function WeatherForecast({ theme }) {
   return (
     <ForecastWrapper>
-      <HourlyForecast theme={theme} />
-      <DailyForecast theme={theme} />
+      <Suspense fallback={renderLoader()}>
+        <HourlyForecast theme={theme} />
+        <DailyForecast theme={theme} />
+      </Suspense>
     </ForecastWrapper>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { useSelector } from 'react-redux'
 import { selectCurrentWeather } from '../../reducers/weatherSlice'
-import { Temperature } from './Temperature'
+import Temperature from './Temperature'
 import { MinutelyForecast } from './MinutelyForecast'
 import { DEVICES } from '../styles/constants'
 

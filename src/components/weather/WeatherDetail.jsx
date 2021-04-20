@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import styled from 'styled-components/macro'
 import { GRADIENTS } from '../styles/constants'
 import TemperatureToggle from '../toggle/TemperatureToggle'
 import FavoriteButton from '../favorites/FavoriteButton'
-import CurrentWeather from './CurrentWeather'
-import CurrentInfo from './CurrentInfo'
-import CurrentConditions from './CurrentConditions'
+//import CurrentWeather from './CurrentWeather'
+//import CurrentInfo from './CurrentInfo'
+//import CurrentConditions from './CurrentConditions'
+
+const CurrentWeather = lazy(() => import('./CurrentWeather'))
+const CurrentInfo = lazy(() => import('./CurrentInfo'))
+const CurrentConditions = lazy(() => import('./CurrentConditions'))
+
+const renderLoader = () => <p>Loading 3...</p>
 
 const WeatherDetail = ({ theme }) => {
   const style = {
@@ -18,9 +24,11 @@ const WeatherDetail = ({ theme }) => {
           <TemperatureToggle />
           <FavoriteButton theme={theme} />
         </ToggleWrapper>
-        <CurrentWeather />
-        <CurrentInfo />
-        <CurrentConditions />
+        <Suspense fallback={renderLoader()}>
+          <CurrentWeather />
+          <CurrentInfo />
+          <CurrentConditions />
+        </Suspense>
       </Wrapper>
     </>
   )
