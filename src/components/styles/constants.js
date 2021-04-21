@@ -74,3 +74,14 @@ export const GRADIENTS = {
   light: 'linear-gradient(135deg, hsl(172, 91%, 70%), hsl(196, 94%, 67%))',
   dark: 'linear-gradient(-225deg,#ff057c 0%, #7c64d5 48%, #003cc5 100%)',
 }
+
+export const WEATHER_ICON = {
+  '01d': 'sun',
+  '02d': 'cloudy',
+  '03d': 'cloudy',
+  '04d': 'cloudy',
+  '09d': 'rain',
+  '11d': 'thunderstorm',
+  '13d': 'snow',
+  '50d': 'mist',
+}
