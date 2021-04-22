@@ -5,22 +5,23 @@ import { RiCelsiusFill, RiFahrenheitFill } from 'react-icons/ri'
 import { selectCurrentWeather, selectUnits } from '../../reducers/weatherSlice'
 import { WEIGHTS } from '../styles/constants'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import SvgComponent from '../images/SvgComponent'
 
 //import { ReactComponent as Cloudy } from '../images/cloudy.svg'
-import { ReactComponent as Mist } from '../images/mist.svg'
-import { ReactComponent as Rain } from '../images/rain.svg'
-import { ReactComponent as Snowy } from '../images/snowy.svg'
+//import { ReactComponent as Mist } from '../images/mist.svg'
+//import { ReactComponent as Rain } from '../images/rain.svg'
+//import { ReactComponent as Snowy } from '../images/snowy.svg'
 //import { ReactComponent as Sun } from '../images/sun.svg'
-import { ReactComponent as Thunderstorm } from '../images/thunderstorm.svg'
+//import { ReactComponent as Thunderstorm } from '../images/thunderstorm.svg'
 
 //const Image = lazy(() => import('../image/Image'))
 const Temperature = lazy(() => import('./Temperature'))
-const Cloudy = lazy(() => import('../images/Cloudy'))
-const Sun = lazy(() => import('../images/Sun'))
+//const Cloudy = lazy(() => import('../images/Cloudy'))
+//const Sun = lazy(() => import('../images/Sun'))
 
 const renderLoader = () => <p>Loading...</p>
 
-export const WEATHER_ICON = {
+/*export const WEATHER_ICON = {
   '01d': <Sun width={100} height={100} />,
   '02d': <Cloudy width={100} height={100} />,
   '03d': <Cloudy width={100} height={100} />,
@@ -29,7 +30,7 @@ export const WEATHER_ICON = {
   '11d': <Thunderstorm width={100} height={100} />,
   '13d': <Snowy width={100} height={100} />,
   '50d': <Mist width={100} height={100} />,
-}
+}*/
 
 function CurrentWeather() {
   const units = useSelector(selectUnits)
@@ -39,7 +40,8 @@ function CurrentWeather() {
       {weather ? (
         <>
           <Suspense fallback={renderLoader()}>
-            {WEATHER_ICON[weather?.weather[0]?.icon]}
+            {/*WEATHER_ICON[weather?.weather[0]?.icon] */}
+            <SvgComponent iconKey={weather?.weather[0]?.icon} />
             <TempWrapper>
               <TemperatureTitle>
                 <Temperature degrees={weather?.temp} />{' '}

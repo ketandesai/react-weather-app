@@ -1,13 +1,8 @@
 import * as React from 'react'
 
-function Cloudy({ width, height }) {
+function Cloudy(props) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
-      width={width}
-      height={height}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" {...props}>
       <path
         fill="#ff9800"
         d="M25 22.5l4-4-4-4V10h-4.5l-4-4-4 4H8v4.5l-4 4 4 4V27h4.5l4 4 4-4H25z"

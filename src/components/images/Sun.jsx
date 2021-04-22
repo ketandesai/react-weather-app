@@ -1,13 +1,8 @@
 import * as React from 'react'
 
-function Sun({ width, height }) {
+function Sun(props) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
-      width={width}
-      height={height}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" {...props}>
       <path
         fill="#ff9800"
         d="M37 29l5-5-5-5v-8h-8l-5-5-5 5h-8v8l-5 5 5 5v8h8l5 5 5-5h8z"
