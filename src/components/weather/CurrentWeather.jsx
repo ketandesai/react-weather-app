@@ -18,7 +18,11 @@ function CurrentWeather() {
       {weather ? (
         <>
           <Suspense fallback={renderLoader()}>
-            <SvgComponent iconKey={weather?.weather[0]?.icon} />
+            <SvgComponent
+              iconKey={weather?.weather[0]?.icon}
+              width={100}
+              height={100}
+            />
             <TempWrapper>
               <TemperatureTitle>
                 <Temperature degrees={weather?.temp} />{' '}

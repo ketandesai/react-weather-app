@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
 import Temperature from './Temperature'
 import { selectHourlyWeather } from '../../reducers/weatherSlice'
