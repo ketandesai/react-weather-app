@@ -13,6 +13,8 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import blueGrey from '@material-ui/core/colors/blueGrey'
 
+import ReactGA from 'react-ga'
+
 function FavoriteButton({ theme }) {
   const dispatch = useDispatch()
   const location = useSelector(selectLocation)
@@ -32,6 +34,12 @@ function FavoriteButton({ theme }) {
           lon: location.lon,
         })
       )
+      //track event to google analytics
+      ReactGA.event({
+        category: 'Favority Place',
+        action: 'Removed Favorite',
+        label: location.city,
+      })
     } else {
       dispatch(
         favoriteAdded({
@@ -41,6 +49,13 @@ function FavoriteButton({ theme }) {
           lon: location.lon,
         })
       )
+
+      //track event to google analytics
+      ReactGA.event({
+        category: 'Favority Place',
+        action: 'Save Favorite',
+        label: location.city,
+      })
     }
   }
 

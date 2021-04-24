@@ -6,7 +6,6 @@ import { DEVICES, WEIGHTS } from '../styles/constants'
 import Spacer from '../spacer/Spacer'
 
 const SvgComponent = lazy(() => import('../images/SvgComponent'))
-const Image = lazy(() => import('../image/Image'))
 const renderLoader = () => <p>Loading Image...</p>
 
 export default function TitleWrapper({ date, icon, daily }) {

@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import ReactGA from 'react-ga'
 
 const URL = 'https://extreme-ip-lookup.com/json'
 const initialState = { status: 'idle', error: null }
@@ -35,6 +36,11 @@ const locationSlice = createSlice({
     [fetchLocation.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
+
+      ReactGA.exception({
+        description: `IP lookup failed, ${action.error.message}`,
+        fatal: true,
+      })
     },
   },
 })

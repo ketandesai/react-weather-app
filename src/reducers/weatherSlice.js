@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import ReactGA from 'react-ga'
 
 const URL = 'https://api.openweathermap.org/data/2.5/onecall'
 const API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY
@@ -40,6 +41,11 @@ const weatherSlice = createSlice({
     [fetchWeather.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
+
+      ReactGA.exception({
+        description: `Weather request failed, ${action.payload.message}`,
+        fatal: true,
+      })
     },
   },
 })

@@ -19,6 +19,8 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
+import ReactGA from 'react-ga'
+
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -80,6 +82,12 @@ export default function FavoritesDrawer() {
                     city: fav.city,
                   })
                 )
+
+                ReactGA.event({
+                  category: 'Favorites',
+                  action: 'Select Favorite',
+                  label: fav.city,
+                })
               }}
             />
             <ListItemIcon>
