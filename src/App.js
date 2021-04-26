@@ -9,12 +9,6 @@ import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
 import { COLORS } from './components/styles/constants'
 
-import ReactGA from 'react-ga'
-const GA_ID = process.env.REACT_APP_GA_ID
-
-// reactGA initialization
-ReactGA.initialize(`${GA_ID}`)
-
 const Main = lazy(() => import('./components/main/Main'))
 const Autocompleter = lazy(() => import('./components/search/Autocompleter'))
 
@@ -36,6 +30,7 @@ export const STYLES = {
 function App() {
   const theme = useSelector(selectTheme)
   const style = STYLES[theme]
+
   return (
     <>
       <ThemeProvider theme={{ background: style.mainBackground }}>

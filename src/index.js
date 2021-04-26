@@ -8,7 +8,37 @@ import { fetchLocation } from './reducers/locationSlice'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 
+import LogRocket from 'logrocket'
+import setupLogRocketReact from 'logrocket-react'
+
+// after calling LogRocket.init()
+LogRocket.init(process.env.REACT_APP_LOG_ROCKET_APP_ID)
+setupLogRocketReact(LogRocket)
 store.dispatch(fetchLocation())
+
+// custom console message
+console.clear()
+console.log(
+  `%c
+
+lloHe   HelloH lloHelloHel  HelloH       loHell          oHello
+lloHe   Hello  lloHelloHell HelloH       loHell         loHelloH
+loH     ell   lloH    Hell   llo          Hel         lloH  loHe
+loH     ell    loH           ll           He          llo    oHe
+loH     ell    loHell        ll           He         ello    oHel
+loHelloHell    loHello       ll           He         ello    oHel
+loHel o ell    loHello       llo          Hel         llo    oHe
+loH     ell    loH          ello    oH   oHel    ll   llo    oHe
+loH     ell    loHe    ell   llo    oH    Hel    ll   lloH  loHe
+lloHe   Hello  lloHell Hell HelloHelloH  loHelloHell    loHelloH
+lloHe   Hello  lloHelloHell HelloHelloH  loHelloHell     oHello
+
+%c Interested in the code behind this application? Well you're in luck - this application is open source! 
+Come say hi, tell me what you're debugging, or if interested in the codebase, 
+check out the repo on GitHub - https://github.com/ketandesai/react-weather-app`,
+  'font-size: 1vmin',
+  'margin-bottom: 5px; line-height: 1.5'
+)
 
 ReactDOM.render(
   <React.StrictMode>

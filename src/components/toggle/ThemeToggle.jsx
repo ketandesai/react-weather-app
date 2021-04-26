@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectTheme, themeUpdated } from '../../reducers/themeSlice'
 import './Toggle.css'
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden'
-import ReactGA from 'react-ga'
 
 function ThemeToggle() {
   const dispatch = useDispatch()
@@ -14,13 +13,6 @@ function ThemeToggle() {
   const onThemeChanged = () => {
     let currentTheme = theme === 'light' ? 'dark' : 'light'
     dispatch(themeUpdated(currentTheme))
-
-    //track event to google analytics
-    ReactGA.event({
-      category: 'Theme',
-      action: 'Toggle Theme',
-      label: currentTheme,
-    })
   }
 
   return (

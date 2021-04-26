@@ -5,18 +5,9 @@ import { selectTheme } from '../../reducers/themeSlice'
 import { useSelector } from 'react-redux'
 import TextLink from '../styles/TextLink'
 import styled from 'styled-components/macro'
-import ReactGA from 'react-ga'
 
 export default function Footer() {
   const theme = useSelector(selectTheme)
-
-  const emitGA = (action, label) => {
-    ReactGA.event({
-      category: 'Footer Links',
-      action,
-      label,
-    })
-  }
 
   return (
     <Wrapper>

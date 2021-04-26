@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { MAP_BOX_BASE_URL } from '../api/config.js'
 
-import ReactGA from 'react-ga'
-
 const initialState = { status: 'idle', error: null }
 
 /**
@@ -34,11 +32,6 @@ const geocodeSlice = createSlice({
     [fetchForward.rejected]: (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
-
-      ReactGA.exception({
-        description: `Geo lookup failed, ${action.error.message}`,
-        fatal: true,
-      })
     },
   },
 })

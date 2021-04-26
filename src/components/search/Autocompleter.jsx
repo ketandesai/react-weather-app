@@ -12,8 +12,6 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import SearchIcon from '@material-ui/icons/Search'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
-import ReactGA from 'react-ga'
-
 export default function Autocompleter() {
   const selectedTheme = useSelector(selectTheme)
   const dispatch = useDispatch()
@@ -46,13 +44,6 @@ export default function Autocompleter() {
           city: locationSelected.place_name,
         })
       )
-
-      // // track this cityName to GA
-      ReactGA.event({
-        category: 'Address',
-        action: 'Place Search',
-        label: locationSelected.place_name,
-      })
     }
   }, [dispatch, locationSelected])
 
