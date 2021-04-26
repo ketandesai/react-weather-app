@@ -11,12 +11,6 @@ import reportWebVitals from './reportWebVitals'
 import LogRocket from 'logrocket'
 import setupLogRocketReact from 'logrocket-react'
 
-// after calling LogRocket.init()
-const APP_ID = process.env.REACT_APP_LOG_ROCKET_APP_ID
-LogRocket.init(APP_ID)
-setupLogRocketReact(LogRocket)
-store.dispatch(fetchLocation())
-
 // custom console message
 console.clear()
 console.log(
@@ -40,6 +34,13 @@ check out the repo on GitHub - https://github.com/ketandesai/react-weather-app`,
   'font-size: 1vmin',
   'margin-bottom: 5px; line-height: 1.5'
 )
+
+// after calling LogRocket.init()
+const APP_ID = process.env.REACT_APP_LOG_ROCKET_APP_ID
+console.log(APP_ID)
+LogRocket.init(APP_ID)
+setupLogRocketReact(LogRocket)
+store.dispatch(fetchLocation())
 
 ReactDOM.render(
   <React.StrictMode>
