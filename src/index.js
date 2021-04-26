@@ -37,7 +37,6 @@ check out the repo on GitHub - https://github.com/ketandesai/react-weather-app`,
 
 // after calling LogRocket.init()
 const APP_ID = process.env.REACT_APP_LOG_ROCKET_APP_ID
-console.log(APP_ID)
 LogRocket.init(APP_ID)
 setupLogRocketReact(LogRocket)
 store.dispatch(fetchLocation())

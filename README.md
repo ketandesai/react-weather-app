@@ -122,10 +122,8 @@ A quick look at the top-level files and directories in this react-weather-app pr
 	├── api
 	├── app
 	├── components
+	├── data
 	├── reducers
-	├── fonts
-	├── styles
-	├── tests
 ├── App.js
 ├── index.js
 ```
@@ -136,10 +134,6 @@ A quick look at the top-level files and directories in this react-weather-app pr
     - **`app`**: This directory contains the store.js for the Redux store
     - **`components`**: This directory contains several React components.
     - **`reducers`**: This directory contains several Redux reducers for managing state throughout the application.
-    - **`fonts`**: This directory contain font files related to several font variations and formats.
-    - **`sass`**: This directory contain the application styles written in `scss` grouped into several directories.
-    - **`styles`**: This directory contain only two files `main.css` (styles used in development) and `style.css` (styles used in production).
-    - **`tests`**: This directory contain test suites with each file containing several test cases testing a utility function or a component.
 3.  - **`App.js`**: This is the main React component that is rendered in the DOM which contain the containers & components as well as routing.
 4.  - **`index.js`**: This is the first file which gets run in the browser after starting the application. `App.js` component rendering as well as `serviceworker` registration process takes place in this file.
 
