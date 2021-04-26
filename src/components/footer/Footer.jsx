@@ -30,7 +30,6 @@ export default function Footer() {
           href="https://github.com/ketandesai/weather-app"
           target="_blank"
           rel="noreferrer noopener"
-          onClick={() => emitGA('Visit Github', 'Github Link')}
         >
           Ketan Desai
         </TextLink>
