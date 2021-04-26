@@ -12,7 +12,8 @@ import LogRocket from 'logrocket'
 import setupLogRocketReact from 'logrocket-react'
 
 // after calling LogRocket.init()
-LogRocket.init(process.env.REACT_APP_LOG_ROCKET_APP_ID)
+const APP_ID = process.env.REACT_APP_LOG_ROCKET_APP_ID
+LogRocket.init(APP_ID)
 setupLogRocketReact(LogRocket)
 store.dispatch(fetchLocation())
 
