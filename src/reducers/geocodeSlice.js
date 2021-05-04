@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { MAP_BOX_BASE_URL } from '../api/config.js'
 
+const API_URL = process.env.REACT_APP_API_GW_URL
 const initialState = { status: 'idle', error: null }
 
 /**
@@ -9,9 +9,7 @@ const initialState = { status: 'idle', error: null }
 export const fetchForward = createAsyncThunk(
   'geocode/fetchForward',
   async (city) => {
-    const response = await fetch(
-      `${MAP_BOX_BASE_URL}/geocoding/v5/mapbox.places/${city}.json?access_token=${process.env.REACT_APP_MAP_BOX_API_KEY}`
-    )
+    const response = await fetch(`${API_URL}/location/${city}.json`)
     return response.json()
   }
 )

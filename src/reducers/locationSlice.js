@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-const URL = 'https://extreme-ip-lookup.com/json'
+const API_URL = process.env.REACT_APP_API_GW_URL
 const initialState = { status: 'idle', error: null }
 
 /**
@@ -9,7 +9,7 @@ const initialState = { status: 'idle', error: null }
 export const fetchLocation = createAsyncThunk(
   'location/fetchLocation',
   async () => {
-    const response = await fetch(URL)
+    const response = await fetch(`${API_URL}/ip`)
     return response.json()
   }
 )
