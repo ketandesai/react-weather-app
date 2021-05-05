@@ -1,0 +1,59 @@
+#Open API Specification for importing to AWS
+openapi: '3.0.1'
+info:
+  title: 'React Weather'
+  description: 'React Weather'
+  version: '2021-05-05 16:06:32UTC'
+servers:
+  - url: 'https://odsxhox5i4.execute-api.us-east-1.amazonaws.com/{basePath}'
+    variables:
+      basePath:
+        default: ''
+paths:
+  /ip:
+    get:
+      responses:
+        default:
+          description: 'Default response for GET /ip'
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: '1.0'
+        type: 'http_proxy'
+        httpMethod: 'GET'
+        uri: 'https://extreme-ip-lookup.com/json'
+        connectionType: 'INTERNET'
+  /location/{city}:
+    get:
+      responses:
+        default:
+          description: 'Default response for GET /location/{city}'
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: '1.0'
+        type: 'http_proxy'
+        httpMethod: 'GET'
+        uri: 'https://api.mapbox.com/geocoding/v5/mapbox.places/{city}?access_token=${stageVariables.mapboxid}'
+        connectionType: 'INTERNET'
+        timeoutInMillis: 30000
+  /weather:
+    get:
+      responses:
+        default:
+          description: 'Default response for GET /weather'
+      x-amazon-apigateway-integration:
+        requestParameters:
+          append:querystring.appid: '$stageVariables.appid'
+        payloadFormatVersion: '1.0'
+        type: 'http_proxy'
+        httpMethod: 'GET'
+        uri: 'https://api.openweathermap.org/data/2.5/onecall?appid=${stageVariables.openweatherid}'
+        connectionType: 'INTERNET'
+        timeoutInMillis: 30000
+x-amazon-apigateway-cors:
+  allowMethods:
+    - 'GET'
+  maxAge: 0
+  allowCredentials: false
+  allowOrigins:
+    - 'http://ketandesai.s3-website-us-east-1.amazonaws.com'
+    - 'http://localhost:3000'
+    - 'https://ketandesai.s3.amazonaws.com'
+x-amazon-apigateway-importexport-version: '1.0'
