@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import Spacer from '../spacer/Spacer'
 import Temperature from './Temperature'
-import { WEIGHTS, DEVICES } from '../styles/constants'
+import { WEIGHTS, QUERIES } from '../styles/constants'
 
 function TemperatureWrapper({ data, showSymbol }) {
   return (
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   gap: 16px;
 
   /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     gap: 4px;
     font-size: 0.9rem;
     width: 100%;

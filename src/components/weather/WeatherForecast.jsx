@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
-import { DEVICES } from '../styles/constants'
+import { QUERIES } from '../styles/constants'
 
 const HourlyForecast = lazy(() => import('./HourlyForecast'))
 const DailyForecast = lazy(() => import('./DailyForecast'))
@@ -22,7 +22,7 @@ const ForecastWrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
   padding-bottom: 16px;
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: column;
   }
 `

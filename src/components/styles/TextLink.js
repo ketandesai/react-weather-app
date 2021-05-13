@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro'
-import { DEVICES } from '../styles/constants'
+import { QUERIES } from '../styles/constants'
 
 const AsideWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: row;
     justify-content: space-between;
   }

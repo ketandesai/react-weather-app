@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-import { DEVICES } from '../styles/constants'
+import { QUERIES } from '../styles/constants'
 
 import OpacityIcon from '@material-ui/icons/Opacity'
 
@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   gap: 16px;
 
   /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     gap: 4px;
     font-size: 0.9rem;
     width: 100%;

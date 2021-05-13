@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { selectDailyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
-import { DEVICES, GRADIENTS } from '../styles/constants'
+import { QUERIES, GRADIENTS } from '../styles/constants'
 import TitleWrapper from './TitleWrapper'
 import Precipitation from './Precipitation'
 import TemperatureWrapper from './TemperatureWrapper'
@@ -29,7 +29,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  @media (min-width: ${DEVICES.tablet}) {
+
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -46,7 +47,7 @@ const DailyWrapper = styled.div`
   background: var(--background);
 
   /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: column;
     align-items: center;
     flex-basis: 125px;

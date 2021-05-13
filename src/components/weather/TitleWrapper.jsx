@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components/macro'
 import DateComponent from '../time/DateComponent'
 import TimeComponent from '../time/TimeComponent'
-import { DEVICES, WEIGHTS } from '../styles/constants'
+import { QUERIES, WEIGHTS } from '../styles/constants'
 import Spacer from '../spacer/Spacer'
 
 const SvgComponent = lazy(() => import('../images/SvgComponent'))
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: column;
     align-items: center;
   }

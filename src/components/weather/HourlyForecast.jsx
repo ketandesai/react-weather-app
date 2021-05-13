@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import Temperature from './Temperature'
 import { selectHourlyWeather } from '../../reducers/weatherSlice'
 import { useSelector } from 'react-redux'
-import { DEVICES, WEIGHTS, GRADIENTS } from '../styles/constants'
+import { QUERIES, WEIGHTS, GRADIENTS } from '../styles/constants'
 import TitleWrapper from './TitleWrapper'
 import Precipitation from './Precipitation'
 
@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 4px;
   margin-bottom: 16px;
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: row;
     justify-content: space-between;
   }
@@ -53,7 +53,7 @@ const HourWrapper = styled.div`
   background: var(--background);
 
   /* For tablets and larger devices */
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     flex-direction: column;
     align-items: center;
     flex-basis: 125px;

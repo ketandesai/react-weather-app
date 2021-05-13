@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { DEVICES } from '../styles/constants'
+import { QUERIES } from '../styles/constants'
 
 function GitHubLogo() {
   return (
@@ -63,7 +63,7 @@ const GitHubLink = styled.a`
       transform: rotate(10deg);
     }
   }
-  @media (max-width: ${DEVICES.mobile}) {
+  @media ${QUERIES.laptopAndUp} {
     animation: octocat-wave 560ms ease-in-out;
 
     :hover .octo-arm {

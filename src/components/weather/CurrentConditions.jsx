@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { selectCurrentWeather } from '../../reducers/weatherSlice'
 import Temperature from './Temperature'
 import { MinutelyForecast } from './MinutelyForecast'
-import { DEVICES } from '../styles/constants'
+import { QUERIES } from '../styles/constants'
 
 export default function CurrentConditions() {
   const weather = useSelector(selectCurrentWeather)
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: ${DEVICES.tablet}) {
+  @media ${QUERIES.tabletAndUp} {
     justify-content: space-around;
   }
 `
