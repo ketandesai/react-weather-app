@@ -2324,10 +2324,10 @@
     is-plain-obj "^1.1.0"
     xtend "^4.0.1"
 
-"@mapbox/mapbox-sdk@0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-sdk/-/mapbox-sdk-0.15.0.tgz#2c4e35fa869151f6b5cd3da07458e6d185afdcd9"
-  integrity sha512-oU7XI8c7nQKLqdcLvnFVv4t0wq7rI+1SgW8HmUMr1XFirWKtVVNgsiZEI3esmfBeMhDpXmzHeZ1SV6dx35Qo9A==
+"@mapbox/mapbox-sdk@0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-sdk/-/mapbox-sdk-0.15.1.tgz#1a36cd892574ea9cdb956457fab5c0b73cab6de1"
+  integrity sha512-SdJtg4s1Qhm0o6wGGWqYvNF6E6qBEPiYdZkqQDNblW0H9/yC2Wqywuy+QTAc2e4FWjDttbBzU9g/PaV7Zozb/A==
   dependencies:
     "@mapbox/fusspot" "^0.4.0"
     "@mapbox/parse-mapbox-token" "^0.2.0"
